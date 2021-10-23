@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { auth, database } from "../utils/firebase";
+import { useHistory } from "react-router";
 
 /* This example requires Tailwind CSS v2.0+ */
 const navigation = [
@@ -8,8 +10,31 @@ const navigation = [
   { name: "Company", href: "#" },
 ];
 
-
   export default function Header(props) {
+    const [isAuth, setIsAuth] = useState(false);
+    const history = useHistory();
+    
+    useEffect(() => {
+  
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          setIsAuth(true);
+        }
+        return unsubscribe;
+      });
+    }, []);
+
+    const handleSignOut = () => {
+      if (isAuth) {
+        auth
+          .signOut()
+          .then(() => {
+            history.replace("/");
+          })
+          .catch((error) => alert(error.message));
+      }
+    };
+
     console.log(props.id)
     return (
       <header className="absolute inset-y-0 top-0 w-screen bg-gray-900 h-96 z-0">
@@ -47,8 +72,9 @@ const navigation = [
               <a
                 href="#"
                 className="inline-block bg-white py-2 px-4 border border-transparent rounded-md text-base font-medium text-indigo-900 hover:bg-indigo-50"
+                onClick={handleSignOut}
               >
-                Cart
+                Leave
               </a>
             </div>
           </div>

@@ -47,17 +47,6 @@ export default function Home(props) {
     return unsubscribe;
   };
 
-  const handleSignOut = () => {
-    if (isAuth) {
-      auth
-        .signOut()
-        .then(() => {
-          history.replace("/");
-        })
-        .catch((error) => alert(error.message));
-    }
-  };
-
   const handleImageClick = (product) => {
     props.handleCurrItemChange(product);
     history.replace("/itemdetail");
@@ -70,9 +59,10 @@ export default function Home(props) {
       <div>
         <NavBar id={id} />
 
+        {'DONT MOVE THIS BUTTON OR ELSE THINGS WILL BREAK'}
         {isAuth && (
           <div>
-            <Button onClick={handleSignOut}>Sign Out</Button>
+            <Button>Sign Out</Button>
             <h1>THIS IS THE HOMEPAGE</h1>
           </div>
         )}
@@ -107,7 +97,9 @@ export default function Home(props) {
                             quick-look-browsers="safari chrome"
                             rotation-per-second={(i % 2 == 0) ? "500%" : "-500%"}
                             field-of-view="70deg"
-                          ></model-viewer>
+                            auto-rotate-delay='0'>
+                            <div slot="progress-bar" />
+                          </model-viewer>
                         </div>
                         <div className="mt-4 p-8 flex justify-between">
                           <div>
