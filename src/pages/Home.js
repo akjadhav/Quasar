@@ -85,7 +85,7 @@ export default function Home(props) {
                       <div key={i} className="group relative">
                         <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
                           <model-viewer
-                            style={{ width: "280px", height: "375", paddingTop: "80px", background: "none" }}
+                            style={{ width: "280px", height: "375px", paddingTop: "80px", background: "none" }}
                             class="model"
                             src={product.mod_src}
                             alt={product.description + " glb"}
