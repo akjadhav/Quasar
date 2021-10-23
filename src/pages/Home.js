@@ -56,7 +56,7 @@ export default function Home(props) {
     return <div></div>;
   } else {
     return (
-      <div>
+      <div className="">
         <NavBar id={id} />
 
         {'DONT MOVE THIS BUTTON OR ELSE THINGS WILL BREAK'}
@@ -69,23 +69,25 @@ export default function Home(props) {
 
         <Button onClick={handleAddScan}>Add Scan</Button>
 
-        <div className="bg-gradient-to-b from-gray-900 to-blue-900 relative z-40">
-          <div className="stars">
-            <div className="max-w-2xl mx-auto px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 -my-32">
+        <div className="bg-gradient-to-b from-gray-900 to-purple-900 relative z-40">
+          <div className="">
+            <div className="max-w-2xl mx-auto px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8 -my-32">
 
-              <h2 className="text-6xl py-10 drop-shadow-lg font-extrabold tracking-tight text-center my-0 text-white">
-                NCR API STORE
+              <h2 className="text-8xl pb-20 drop-shadow-lg font-extrabold tracking-tight text-center my-0 text-white">
+                HACKGT STORE
               </h2>
 
-              <div className="mt-6 drop-shadow-lg grid grid-cols-1 gap-y-10 gap-x-6 mx-24 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-20">
+              {/* product cells div */}
+              <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 mx-24 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-10">
                 {console.log(products)}
                 {products &&
                   products.map((product, i) => (
                     <Paper key={i} onClick={() => handleImageClick(product)}>
-                      <div key={i} className="group relative">
-                        <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
+                      {/* each cell */}
+                      <div key={i} className="group p-4 drop-shadow-2xl relative">
+                        <div className="w-full rounded-xl min-h-80 bg-gradient-to-b from-blue-900 to-green-300 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-80 lg:h-96 lg:aspect-none">
                           <model-viewer
-                            style={{ width: "280px", height: "375px", paddingTop: "80px", background: "none" }}
+                            style={{ width: "280px", height: "390px", paddingTop: "20px", paddingBottom: "20px", background: "none" }}
                             class="model"
                             src={product.mod_src}
                             alt={product.description + " glb"}
@@ -101,19 +103,17 @@ export default function Home(props) {
                             <div slot="progress-bar" />
                           </model-viewer>
                         </div>
-                        <div className="mt-4 p-8 flex justify-between">
-                          <div>
-                            <h3 className="text-xl font-extrabold text-gray-700">
-                              <a>
-                                <span
-                                  aria-hidden="true"
-                                  className="absolute inset-0"
-                                />
-                                <p>{product.name}</p>
-                              </a>
-                            </h3>
-                          </div>
-                          <p className="text-xl font-medium text-gray-900">
+                        <div className="mt-4 p-4 flex justify-between">
+                          <h3 className="text-2xl font-extrabold text-gray-700">
+                            <a>
+                              <span
+                                aria-hidden="true"
+                                className="absolute inset-0"
+                              />
+                              <p>{product.name}</p>
+                            </a>
+                          </h3>
+                          <p className="text-2xl font-medium text-gray-900">
                             {product.price}
                           </p>
                         </div>

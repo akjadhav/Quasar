@@ -29,6 +29,13 @@ export default function ItemDetail(props) {
     });
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  };
+
   const onPurchaseCryptoClick = (event) => {
     try {
       handlePaymentCrypto.openWeb3(event, false);
@@ -56,40 +63,40 @@ export default function ItemDetail(props) {
     return (
       <div>
         <NavBar />
-        <div className="bg-white min-h-full">
+        <div className="min-h-full bg-gradient-to-b from-gray-900 to-purple-900 relative z-40">
           <div className="mx-auto block m-24 text-center bg-gray-100 w-10/12 h-auto">
             <div className="flex">
-              { currItem.mod_src && (
+              {currItem.mod_src && (
                 <div className="w-6/12 h-96 border-red-700 m-14">
-                <model-viewer
-                  style = {{width: "500px", height: "500px"}}
-                  class="model"
-                  src={currItem.mod_src}
-                  alt={currItem.description + " glb"}
-                  preload=""
-                  background-color={modelBackgroundColor}
-                  shadow-intensity="1"
-                  camera-controls=""
-                  auto-rotate=""
-                  ios-src={currItem.mod_ios_src}
-                  quick-look-browsers="safari chrome"
-                ><div slot="progress-bar"/></model-viewer>
-              </div>
+                  <model-viewer
+                    style={{ width: "500px", height: "500px" }}
+                    class="model"
+                    src={currItem.mod_src}
+                    alt={currItem.description + " glb"}
+                    preload=""
+                    background-color={modelBackgroundColor}
+                    shadow-intensity="1"
+                    camera-controls=""
+                    auto-rotate=""
+                    ios-src={currItem.mod_ios_src}
+                    quick-look-browsers="safari chrome"
+                  ><div slot="progress-bar" /></model-viewer>
+                </div>
               )}
-              { !currItem.mod_src && (
+              {!currItem.mod_src && (
                 <div className="w-6/12 m-24">
-                <img src={currItem.img_src} className="" />
-              </div>
+                  <img src={currItem.img_src} className="" />
+                </div>
               )}
               <div className="w-6/12">
                 <h2 className="text-6xl font-extrabold tracking-tight text-center my-10 text-gray-900">
-                  { currItem.name }
+                  {currItem.name}
                 </h2>
                 <h2 className="text-4xl font-bold tracking-tight text-center my-10 text-gray-900">
-                  { currItem.price }
+                  {currItem.price}
                 </h2>
                 <h3 className="text-2xl font-medium tracking-tight text-center my-16 text-gray-900">
-                  { currItem.desc }
+                  {currItem.desc}
                 </h3>
 
                 <button
@@ -107,15 +114,19 @@ export default function ItemDetail(props) {
               </div>
             </div>
           </div>
-          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 mx-24 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-20">
-              {console.log(products)}
-              {products &&
-                products.map((product, i) => (
-                  <Paper key={i} onClick={() => handleImageClick(product)}>
-                    <div key={i} className="group relative">
-                      <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
+          <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-white">
+            RECOMMENDED PRODUCTS
+          </h2>
+
+          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 mx-24 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-10">
+            {console.log(products)}
+            {products &&
+              products.map((product, i) => (
+                <Paper key={i} onClick={() => handleImageClick(product)}>
+                  <div key={i} onClick={() => scrollToTop()} className="group p-4 drop-shadow-2xl relative">
+                    <div className="w-full rounded-xl min-h-80 bg-gradient-to-b from-blue-900 to-green-300 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-80 lg:h-96 lg:aspect-none">
                       <model-viewer
-                        style = {{width: "280px", height: "375px"}}
+                        style={{ width: "280px", height: "390px", paddingTop: "20px", paddingBottom: "20px", background: "none" }}
                         class="model"
                         src={product.mod_src}
                         alt={product.description + " glb"}
@@ -125,36 +136,30 @@ export default function ItemDetail(props) {
                         auto-rotate=""
                         ios-src={product.mod_ios_src}
                         quick-look-browsers="safari chrome"
-                        rotation-per-second={(i % 2 == 0)? "500%" : "-500%"}
+                        rotation-per-second={(i % 2 == 0) ? "500%" : "-500%"}
                         field-of-view="70deg"
-                      ></model-viewer>
-                      </div>
-                      <div className="mt-4 flex justify-between">
-                        <div>
-                          <h3 className="text-sm text-gray-700">
-                            <a>
-                              <span
-                                aria-hidden="true"
-                                className="absolute inset-0"
-                              />
-                              {product.name}
-                            </a>
-                          </h3>
-                          <p className="mt-1 text-sm text-gray-500">
-                            {product.color}
-                          </p>
-                        </div>
-                        <p className="text-sm font-medium text-gray-900">
-                          {product.price}
-                        </p>
-                      </div>
+                        auto-rotate-delay='0'>
+                        <div slot="progress-bar" />
+                      </model-viewer>
                     </div>
-                  </Paper>
-                ))}
-            </div>
-          <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">
-            DESCRIPTION
-          </h2>
+                    <div className="mt-4 p-4 flex justify-between">
+                      <h3 className="text-2xl font-extrabold text-gray-700">
+                        <a>
+                          <span
+                            aria-hidden="true"
+                            className="absolute inset-0"
+                          />
+                          <p>{product.name}</p>
+                        </a>
+                      </h3>
+                      <p className="text-2xl font-medium text-gray-900">
+                        {product.price}
+                      </p>
+                    </div>
+                  </div>
+                </Paper>
+              ))}
+          </div>
         </div>
       </div>
     );
