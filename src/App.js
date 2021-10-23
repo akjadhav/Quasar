@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Users from './pages/Users'
 import Login from './pages/Login'
+import getSiteById from './utils/getSiteById'
 
 import {
   BrowserRouter as Router,
@@ -12,6 +13,7 @@ import {
 } from "react-router-dom";
 
 function App() {
+  getSiteById();
   return (
     <div>
     <Router>
