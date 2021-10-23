@@ -4,7 +4,6 @@ import About from './pages/About'
 import Users from './pages/Users'
 import ItemDetail from './pages/ItemDetail'
 import ItemDetailDynamic from './pages/ItemDetailDynamic'
-import ItemDetailChair from './pages/ItemDetailChair'
 import Search from './pages/Search'
 import Login from './pages/Login'
 import Cart from './pages/Cart'
@@ -58,9 +57,6 @@ function App() {
           </Route>
           <Route path="/itemdetail">
             <ItemDetailDynamic currItem={currItem}/>
-          </Route>
-          <Route path="/itemdetailchair">
-            <ItemDetailChair />
           </Route>
           <Route path="/home">
             <Home setCurrItem={setCurrItem}/> 
