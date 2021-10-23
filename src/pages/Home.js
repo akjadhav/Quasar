@@ -1,5 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
+import * as test from '../utils/NCR_API.js'
+test.init_API();
 
 const products = [
     {
