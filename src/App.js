@@ -57,7 +57,7 @@ function App() {
               <Search />
             </Route>
             <Route path="/itemdetail">
-              <ItemDetailDynamic currItem={cookies.currItem} />
+              <ItemDetailDynamic currItem={cookies.currItem} handleCurrItemChange={handleCurrItemChange} />
             </Route>
             <Route path="/home">
               <Home handleCurrItemChange={handleCurrItemChange} />

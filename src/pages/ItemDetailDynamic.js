@@ -4,10 +4,11 @@ import { auth, database } from "../utils/firebase";
 import * as handlePaymentCrypto from "../utils/handlePaymentCrypto";
 import { useHistory } from "react-router";
 import "@google/model-viewer/dist/model-viewer";
+import { Button, Paper } from "@mui/material";
 
 export default function ItemDetail(props) {
+  const [products, setProducts] = useState(null);
   const currItem = props.currItem;
-  console.log(currItem)
   const modelBackgroundColor = "#203864";
   const [isAuth, setIsAuth] = useState(false);
   const history = useHistory();
@@ -20,6 +21,11 @@ export default function ItemDetail(props) {
         history.replace("/");
       }
       return unsubscribe;
+    });
+
+    database.ref("items/").on("value", (snapshot) => {
+      let data = snapshot.val();
+      setProducts(data);
     });
   }, []);
 
@@ -39,6 +45,11 @@ export default function ItemDetail(props) {
     }
   };
 
+  const handleImageClick = (product) => {
+    props.handleCurrItemChange(product);
+    history.replace("/itemdetail");
+  };
+  
   if (!isAuth) {
     return <div></div>;
   } else {
@@ -96,7 +107,51 @@ export default function ItemDetail(props) {
               </div>
             </div>
           </div>
-
+          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 mx-24 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-20">
+              {console.log(products)}
+              {products &&
+                products.map((product, i) => (
+                  <Paper key={i} onClick={() => handleImageClick(product)}>
+                    <div key={i} className="group relative">
+                      <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
+                      <model-viewer
+                        style = {{width: "280px", height: "375px"}}
+                        class="model"
+                        src={product.mod_src}
+                        alt={product.description + " glb"}
+                        preload=""
+                        background-color={modelBackgroundColor}
+                        shadow-intensity="1"
+                        auto-rotate=""
+                        ios-src={product.mod_ios_src}
+                        quick-look-browsers="safari chrome"
+                        rotation-per-second={(i % 2 == 0)? "500%" : "-500%"}
+                        field-of-view="70deg"
+                      ></model-viewer>
+                      </div>
+                      <div className="mt-4 flex justify-between">
+                        <div>
+                          <h3 className="text-sm text-gray-700">
+                            <a>
+                              <span
+                                aria-hidden="true"
+                                className="absolute inset-0"
+                              />
+                              {product.name}
+                            </a>
+                          </h3>
+                          <p className="mt-1 text-sm text-gray-500">
+                            {product.color}
+                          </p>
+                        </div>
+                        <p className="text-sm font-medium text-gray-900">
+                          {product.price}
+                        </p>
+                      </div>
+                    </div>
+                  </Paper>
+                ))}
+            </div>
           <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">
             DESCRIPTION
           </h2>
