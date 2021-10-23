@@ -40,11 +40,10 @@ export default function ItemDetail(props) {
         <div className="bg-white min-h-full">
           <div className="mx-auto block m-24 text-center bg-gray-200 w-10/12 h-auto">
             <div className="flex">
-              <div className="w-3/12 m-24">
-                <img src={currItem.img_src} className="" />
-              </div>
-              <div className="w-3/12 m-24">
+              { currItem.mod_src && (
+                <div className="w-6/12 h-96 border-red-700 m-14">
                 <model-viewer
+                    style = {{width: "500px", height: "500px"}}
                   class="model"
                   src={currItem.mod_src}
                   alt={currItem.description + " glb"}
@@ -57,10 +56,19 @@ export default function ItemDetail(props) {
                   quick-look-browsers="safari chrome"
                 ></model-viewer>
               </div>
+              )}
+              { !currItem.mod_src && (
+                <div className="w-6/12 m-24">
+                <img src={currItem.img_src} className="" />
+              </div>
+              )}
               <div className="w-6/12">
                 <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">
-                  HATSUNE
+                  { currItem.name }
                 </h2>
+                <h3 className="text-2xl font-medium tracking-tight text-center my-24 text-gray-900">
+                  { currItem.desc }
+                </h3>
 
                 <button className="inline-block bg-green-600 py-2 w-5/12 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-green-400">
                   Add to Cart
