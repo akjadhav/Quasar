@@ -45,6 +45,7 @@ export default function ItemDetail(props) {
               </div>
               <div className="w-3/12 m-24">
                 <model-viewer
+                  style={{width: '500px', height: '500px'}}
                   class="model"
                   src={currItem.mod_src}
                   alt={currItem.description + " glb"}

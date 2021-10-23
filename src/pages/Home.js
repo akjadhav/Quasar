@@ -58,8 +58,8 @@ export default function Home(props) {
   };
 
   const handleImageClick = (product) => {
+    props.handleCurrItemChange(product);
     history.replace("/itemdetail");
-    props.setCurrItem(product);
   };
 
   if (!isAuth) {

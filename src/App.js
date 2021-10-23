@@ -8,11 +8,18 @@ import Login from "./pages/Login";
 import Cart from "./pages/Cart";
 import { Button } from "@mui/material";
 import { auth, database } from "./utils/firebase";
+import { useCookies } from 'react-cookie';
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
-  const [currItem, setCurrItem] = useState({});
+  const [cookies, setCookie] = useCookies(['currItem']);
+
+  const handleCurrItemChange = (item) => {
+    console.log(item)
+    setCookie('currItem', item, { path: '/' });
+  }
+
   return (
     <div>
       <Router>
@@ -50,10 +57,10 @@ function App() {
               <Search />
             </Route>
             <Route path="/itemdetail">
-              <ItemDetailDynamic currItem={currItem} />
+              <ItemDetailDynamic currItem={cookies.currItem} />
             </Route>
             <Route path="/home">
-              <Home setCurrItem={setCurrItem} />
+              <Home handleCurrItemChange={handleCurrItemChange} />
             </Route>
             <Route path="/about">
               <About />
