@@ -22,6 +22,13 @@ export default function Login() {
         setPassword('')
     }
 
+    const initializeUserData = () => {
+        const unsubscribe = database
+        .ref('users/'+ auth.currentUser.uid +'/scans/')
+        .set({numScans: 0});
+        return unsubscribe
+    }
+
     const handleSignUp = () => {
         auth
           .createUserWithEmailAndPassword(email, password)
@@ -29,10 +36,9 @@ export default function Login() {
               const user = userCredentials.user;
               alert("Account Created, Welcome!");
               clearFields();
-              <Redirect push to='/home' />
+              history.push('/home')
               //this gives the user data on Login
-              // will need to instead pull Steelcase Data in the future
-              //initializeUserData(user.uid);
+              initializeUserData();
           })
           .catch(error => alert(error.message))        
     }

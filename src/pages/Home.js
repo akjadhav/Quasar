@@ -4,9 +4,8 @@ import * as test from '../utils/NCR_API.js'
 
 import { Redirect } from 'react-router'
 import getSiteById from '../utils/getSiteById'
-
 import { useHistory } from 'react-router'
-import { auth } from '../utils/firebase'
+import { auth, database } from '../utils/firebase'
 import { Button } from '@mui/material'
 
 test.init_API();
@@ -56,6 +55,17 @@ const products = [
         return unsubscribe
     }, [])
 
+    const handleAddScan = () => {
+        const updates = {}
+        const unsubscribe = database
+        .ref('users/'+ auth.currentUser.uid +'/scans/')
+        .child('numScans')
+        .transaction(function(numScans) {
+            return (numScans || 0) + 1
+        })
+        return unsubscribe
+    }
+
     const handleSignOut = () => {
         if (isAuth){
             auth
@@ -75,6 +85,8 @@ const products = [
                 <h1>THIS IS THE HOMEPAGE</h1>
           </div>}
 
+          <Button onClick={handleAddScan}>Add Scan</Button>
+            
       <div className="bg-white">
         <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">Departments</h2>
