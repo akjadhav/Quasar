@@ -1,5 +1,4 @@
 const getSiteById = () => {
-    console.log('test')
     let site_id = '5461bb51242d40869cb640f55ea212a8';
     let url = "https://api.ncr.com/site/" + site_id;
 
