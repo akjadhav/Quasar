@@ -59,6 +59,7 @@ export default function Home(props) {
       <div>
         <NavBar id={id} />
 
+        {'DONT MOVE THIS BUTTON OR ELSE THINGS WILL BREAK'}
         {isAuth && (
           <div>
             <Button>Sign Out</Button>
