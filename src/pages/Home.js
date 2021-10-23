@@ -18,6 +18,7 @@ export default function Home(props) {
   const history = useHistory();
   const [isAuth, setIsAuth] = useState(false);
   const id = 1;
+  const modelBackgroundColor = "#203864";
 
   useEffect(() => {
     database.ref("items/").on("value", (snapshot) => {
@@ -58,8 +59,8 @@ export default function Home(props) {
   };
 
   const handleImageClick = (product) => {
+    props.handleCurrItemChange(product);
     history.replace("/itemdetail");
-    props.setCurrItem(product);
   };
 
   if (!isAuth) {
@@ -99,11 +100,19 @@ export default function Home(props) {
                   <Paper key={i} onClick={() => handleImageClick(product)}>
                     <div key={i} className="group relative">
                       <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
-                        <img
-                          src={product.img_src}
-                          alt={product.desc}
-                          className="w-full h-full object-center object-cover lg:w-full lg:h-full"
-                        />
+                      <model-viewer
+                        style = {{width: "300px", height: "300px", paddingTop: "80px"}}
+                        class="model"
+                        src={product.mod_src}
+                        alt={product.description + " glb"}
+                        preload=""
+                        background-color={modelBackgroundColor}
+                        shadow-intensity="1"
+                        auto-rotate=""
+                        ios-src={product.mod_ios_src}
+                        quick-look-browsers="safari chrome"
+                        rotation-per-second={(i % 2 == 0)? "500%" : "-500%"}
+                      ></model-viewer>
                       </div>
                       <div className="mt-4 flex justify-between">
                         <div>
