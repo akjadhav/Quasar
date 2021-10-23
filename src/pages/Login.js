@@ -4,7 +4,8 @@ import { Redirect, useHistory } from "react-router";
 import { TextField, Button } from "@mui/material";
 import NavBar from "../components/NavBar";
 
-export default function Login() {
+
+export default function Login(props) {
   const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,13 +36,19 @@ export default function Login() {
       .createUserWithEmailAndPassword(email, password)
       .then((userCredentials) => {
         const user = userCredentials.user;
-        alert("Account Created, Welcome!");
+        props.setRegisterMessage("Successfully Registered!");
+        props.setRegisterSeverity("success");
+        props.setIsRegisterAlert(true);
         clearFields();
         history.push("/home");
         //this gives the user data on Login
         initializeUserData();
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        props.setRegisterMessage(error.message);
+        props.setRegisterSeverity("error");
+        props.setIsRegisterAlert(true);
+      });
   };
 
   const handleLogIn = () => {
@@ -49,11 +56,17 @@ export default function Login() {
       .signInWithEmailAndPassword(email, password)
       .then((userCredentials) => {
         const user = userCredentials.user;
-        alert("Logged In, Welcome!");
+        props.setLoginMessage("Successfully Logged In!");
+        props.setLoginSeverity("success");
+        props.setIsLoginAlert(true);
         clearFields();
         history.push("/home");
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        props.setLoginMessage(error.message);
+        props.setLoginSeverity("error");
+        props.setIsLoginAlert(true);
+      });
   };
 
   const handleEmailInputChange = (e) => {
@@ -65,7 +78,7 @@ export default function Login() {
   };
 
   return (
-    <div >
+    <div>
       <NavBar />
 
       <div className="bg-gradient-to-b h-screen from-gray-900 to-blue-900 relative z-40">
@@ -75,28 +88,27 @@ export default function Login() {
           </h2>
           <div className="mx-auto rounded-lg w-10/12 bg-white p-10">
             <TextField
+              variant="standard"
               value={email}
-              style={{display: "flex", width: "100%"}}
+              style={{ display: "flex", width: "100%" }}
               label="Email"
               onChange={handleEmailInputChange}
             />
             <TextField
+              variant="standard"
               value={password}
-              style={{display: "flex", width: "100%"}}
+              style={{ display: "flex", width: "100%" }}
               type="password"
               label="Password"
               onChange={handlePasswordInputChange}
             />
             <div className="right-0 align-right text-right">
-            <Button onClick={handleSignUp}>Register</Button>
-            <Button onClick={handleLogIn}>Login</Button>
+              <Button onClick={handleSignUp}>Register</Button>
+              <Button onClick={handleLogIn}>Login</Button>
             </div>
-            
           </div>
         </div>
-      
       </div>
-      
     </div>
   );
 }
