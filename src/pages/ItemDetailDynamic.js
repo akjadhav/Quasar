@@ -56,8 +56,8 @@ export default function ItemDetail(props) {
     return (
       <div>
         <NavBar />
-        <div className="bg-white min-h-full">
-          <div className="mx-auto block m-24 text-center bg-gray-100 w-10/12 h-auto">
+        <div className="bg-gray-900 relative z-50 min-h-full">
+          <div className="mx-auto block m-24 text-center rounded-lg bg-gray-100 w-10/12 h-auto">
             <div className="flex">
               { currItem.mod_src && (
                 <div className="w-6/12 h-96 border-red-700 m-14">
@@ -113,7 +113,7 @@ export default function ItemDetail(props) {
                 products.map((product, i) => (
                   <Paper key={i} onClick={() => handleImageClick(product)}>
                     <div key={i} className="group relative">
-                      <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
+                      <div className="w-full min-h-80 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
                       <model-viewer
                         style = {{width: "280px", height: "375px"}}
                         class="model"
