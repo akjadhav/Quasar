@@ -79,17 +79,10 @@ export default function Home(props) {
 
         <Button onClick={handleAddScan}>Add Scan</Button>
 
-        <div className="bg-white">
-          <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-            <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
-              Departments
-            </h2>
-            <img
-              src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-oranges-1296x728-feature.jpg"
-              className="w-full h-full"
-            />
+        <div className="bg-gradient-to-b from-gray-900 to-blue-900 relative z-40">
+          <div className="max-w-2xl mx-auto px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 -my-32">
 
-            <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">
+            <h2 className="text-6xl font-extrabold tracking-tight text-center my-0 text-white">
               NCR AR STORE
             </h2>
 
@@ -101,7 +94,7 @@ export default function Home(props) {
                     <div key={i} className="group relative">
                       <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
                       <model-viewer
-                        style = {{width: "300px", height: "300px", paddingTop: "80px"}}
+                        style = {{width: "300px", height: "300px", paddingTop: "80px", background:"none"}}
                         class="model"
                         src={product.mod_src}
                         alt={product.description + " glb"}
@@ -125,11 +118,11 @@ export default function Home(props) {
                               {product.name}
                             </a>
                           </h3>
-                          <p className="mt-1 text-sm text-gray-500">
+                          <p className="mt-1 p-2 font-medium text-gray-500">
                             {product.color}
                           </p>
                         </div>
-                        <p className="text-sm font-medium text-gray-900">
+                        <p className="text-sm p-2 font-medium text-gray-900">
                           {product.price}
                         </p>
                       </div>
@@ -138,11 +131,11 @@ export default function Home(props) {
                 ))}
             </div>
 
-            <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">
+            <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-white">
               OUR STORY
             </h2>
 
-            <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">
+            <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-white">
               HACK GT
             </h2>
           </div>
