@@ -17,6 +17,7 @@ test.init_API();
     const [isAuth, setAuth] = useState(false)
     const [products, setProducts] = useState(null)
     const history = useHistory()
+    const id = 1
 
     useEffect(() => {
         database
@@ -56,7 +57,7 @@ test.init_API();
 
     return (
     <div>
-      <NavBar />
+      <NavBar id={id} />
 
       {isAuth && <div>
                 <Button onClick={handleSignOut}>Sign Out</Button>
