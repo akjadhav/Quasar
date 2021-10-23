@@ -62,6 +62,7 @@ export default function Search() {
                 type="file"
                 name="file"
                 id="upload-ar"
+                accept=".jpg, .jpeg, .png"
                 className="hidden"
                 onChange={onChangeHandler}
               />
