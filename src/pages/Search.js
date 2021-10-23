@@ -29,13 +29,13 @@ export default function Search() {
     return (
       <div>
         <NavBar />
-        <div className="bg-white">
-          <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">
+        <div className="relative z-40 bg-gradient-to-b from-gray-900 to-blue-900 ">
+          <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-white">
             SEARCH
           </h2>
 
-          <div className="flex mx-auto w-10/12 mx-24">
-            <label htmlFor="search" className="sr-only">
+          <div className="flex mx-auto w-10/12">
+            <label htmlFor="search" className="sr-only text-white">
               Search
             </label>
             <input
@@ -47,9 +47,9 @@ export default function Search() {
             />
           </div>
 
-          <div className="grid grid-cols-2 mb-24">
+          <div className="grid grid-cols-2">
             <div className="text-center">
-              <h2 className="text-6xl font-extrabold tracking-tight text-center m-24 pl-80 text-gray-900">
+              <h2 className="text-6xl font-extrabold tracking-tight text-center m-24 pl-80 text-white">
                 SEARCH
               </h2>
               <label for="upload-ar">
@@ -68,10 +68,10 @@ export default function Search() {
               />
             </div>
             <div className="mt-40">
-              <h2 className="text-3xl font-bold tracking-tight text-center m-24 text-gray-900 pr-80">
+              <h2 className="text-3xl font-bold tracking-tight text-center m-24 text-white pr-80">
                 Item Name
               </h2>
-              <h3 className="text-2xl font-light tracking-tight m-24 text-gray-900 pr-80">
+              <h3 className="text-2xl font-light tracking-tight m-24 text-white pr-80">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit,
               </h3>
             </div>
