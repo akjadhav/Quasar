@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../components/NavBar'
 import * as test from '../utils/NCR_API.js'
+
+import { Redirect } from 'react-router'
+import getSiteById from '../utils/getSiteById'
+
+import { useHistory } from 'react-router'
+import { auth } from '../utils/firebase'
+import { Button } from '@mui/material'
+
 test.init_API();
 
 const products = [
@@ -34,9 +42,39 @@ const products = [
   ]
 
   export default function Home() {
+    const [isAuth, setAuth] = useState(false)
+    const history = useHistory()
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            if (user) {
+                setAuth(true)
+            } else {
+                history.replace("/")
+            }
+        })
+        return unsubscribe
+    }, [])
+
+    const handleSignOut = () => {
+        if (isAuth){
+            auth
+            .signOut()
+            .then(() => {
+                history.replace('/')
+            })
+            .catch(error => alert(error.message))
+        }   
+    }
     return (
     <div>
       <NavBar />
+
+      {isAuth && <div>
+                <Button onClick={handleSignOut}>Sign Out</Button>
+                <h1>THIS IS THE HOMEPAGE</h1>
+          </div>}
+
       <div className="bg-white">
         <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
           <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">Departments</h2>
@@ -77,7 +115,6 @@ const products = [
           <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">OUR STORY</h2>
 
           <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">HACK GT</h2>
-
         </div>
       </div>
     </div>
