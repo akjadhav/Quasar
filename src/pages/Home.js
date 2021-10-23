@@ -47,17 +47,6 @@ export default function Home(props) {
     return unsubscribe;
   };
 
-  const handleSignOut = () => {
-    if (isAuth) {
-      auth
-        .signOut()
-        .then(() => {
-          history.replace("/");
-        })
-        .catch((error) => alert(error.message));
-    }
-  };
-
   const handleImageClick = (product) => {
     props.handleCurrItemChange(product);
     history.replace("/itemdetail");
@@ -72,7 +61,7 @@ export default function Home(props) {
 
         {isAuth && (
           <div>
-            <Button onClick={handleSignOut}>Sign Out</Button>
+            <Button>Sign Out</Button>
             <h1>THIS IS THE HOMEPAGE</h1>
           </div>
         )}
@@ -106,7 +95,8 @@ export default function Home(props) {
                         quick-look-browsers="safari chrome"
                         rotation-per-second={(i % 2 == 0)? "500%" : "-500%"}
                         field-of-view="70deg"
-                      ></model-viewer>
+                        auto-rotate-delay='0'
+                      ><div slot="progress-bar"/></model-viewer>
                       </div>
                       <div className="mt-4 flex justify-between">
                         <div>
@@ -116,7 +106,7 @@ export default function Home(props) {
                                 aria-hidden="true"
                                 className="absolute inset-0"
                               />
-                              {product.name}
+                              <p style={{fontSize: 30, padding:10}}>{product.name}</p>
                             </a>
                           </h3>
                           <p className="mt-1 p-2 font-medium text-gray-500">
