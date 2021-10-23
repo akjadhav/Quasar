@@ -67,11 +67,11 @@ test.init_API();
           <Button onClick={handleAddScan}>Add Scan</Button>
             
       <div className="bg-white">
-        <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">Departments</h2>
+        <div className="w-screen lg:w-screen h-96">
+          
           <img
             src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-oranges-1296x728-feature.jpg"
-            className="w-full h-full"
+            className="h-full w-full object-cover"
           />
 
           <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">NCR AR STORE</h2>
@@ -88,16 +88,16 @@ test.init_API();
                         className="w-full h-full object-center object-cover lg:w-full lg:h-full"
                     />
                     </div>
-                    <div className="mt-4 flex justify-between">
-                    <div>
-                        <h3 className="text-sm text-gray-700">
-                        <a>
-                            <span aria-hidden="true" className="absolute inset-0" />
-                            {product.name}
-                        </a>
-                        </h3>
-                        <p className="mt-1 text-sm text-gray-500">{product.color}</p>
-                    </div>
+                    <div className="m-4 flex justify-between cursor-pointer">
+                      <div>
+                          <h3 className="text-md text-gray-700">
+                          <a>
+                              <span aria-hidden="true" className="absolute inset-0" />
+                              {product.name}
+                          </a>
+                          </h3>
+                          <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                      </div>
                     <p className="text-sm font-medium text-gray-900">{product.price}</p>
                     </div>
                 </div>
