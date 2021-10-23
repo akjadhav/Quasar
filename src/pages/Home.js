@@ -101,7 +101,7 @@ export default function Home(props) {
                     <div key={i} className="group relative">
                       <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
                       <model-viewer
-                        style = {{width: "300px", height: "300px", paddingTop: "80px"}}
+                        style = {{width: "280px", height: "375px"}}
                         class="model"
                         src={product.mod_src}
                         alt={product.description + " glb"}
@@ -112,6 +112,7 @@ export default function Home(props) {
                         ios-src={product.mod_ios_src}
                         quick-look-browsers="safari chrome"
                         rotation-per-second={(i % 2 == 0)? "500%" : "-500%"}
+                        field-of-view="70deg"
                       ></model-viewer>
                       </div>
                       <div className="mt-4 flex justify-between">
