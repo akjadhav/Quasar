@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from '../components/Header'
+import NavBar from '../components/NavBar'
 import * as test from '../utils/NCR_API.js'
 test.init_API();
 
@@ -22,24 +22,33 @@ const products = [
         price: '$75',
         color: 'Brown',
       },
+      {
+        id: 3,
+        name: 'Hatsune Miku',
+        href: '/itemdetail',
+        imageSrc: 'https://resize.cdn.otakumode.com/exq/65/820.1093/shop/product/fd764746a7054f1096a3f52dab6953f3.jpg',
+        imageAlt: "Waifu",
+        price: '$200',
+        color: 'Brown',
+      },
   ]
 
-const navigation = [
-    { name: 'Solutions', href: '#' },
-    { name: 'Pricing', href: '#' },
-    { name: 'Docs', href: '#' },
-    { name: 'Company', href: '#' },
-  ]
-  
   export default function Home() {
     return (
     <div>
-      <Header />
+      <NavBar />
       <div className="bg-white">
         <div className="max-w-2xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-          <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">Items for Sale</h2>
+          <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">Departments</h2>
+          <img
+            src="https://images-prod.healthline.com/hlcmsresource/images/AN_images/benefits-of-oranges-1296x728-feature.jpg"
+            className="w-full h-full"
+          />
+
+
+          <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">NCR AR STORE</h2>
   
-          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+          <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 mx-24 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-20">
             {products.map((product) => (
               <div key={product.id} className="group relative">
                 <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
@@ -64,6 +73,11 @@ const navigation = [
               </div>
             ))}
           </div>
+
+          <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">OUR STORY</h2>
+
+          <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">HACK GT</h2>
+
         </div>
       </div>
     </div>

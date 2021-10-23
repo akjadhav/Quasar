@@ -2,6 +2,7 @@ import React from 'react'
 import Home from './pages/Home'
 import About from './pages/About'
 import Users from './pages/Users'
+import ItemDetail from './pages/ItemDetail'
 
 import {
   BrowserRouter as Router,
@@ -26,12 +27,18 @@ function App() {
             <li>
               <Link to="/users">Users</Link>
             </li>
+            <li>
+              <Link to="/itemdetail">detail</Link>
+            </li>
           </ul>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/itemdetail">
+            <ItemDetail />
+          </Route>
           <Route path="/about">
             <About />
           </Route>
