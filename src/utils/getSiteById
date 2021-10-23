@@ -1,43 +1,44 @@
 const getSiteById = () => {
-    let site_id = '5461bb51242d40869cb640f55ea212a8';
-    let url = "https://api.ncr.com/site/" + site_id;
+  let site_id = "5461bb51242d40869cb640f55ea212a8";
+  let url = "https://api.ncr.com/site/" + site_id;
 
-    let basic_login = 'acct:test-drive-d31825e3d1a345739c7c1@71699f05-a30e-4ecb-a529-5b79a43742c6';
+  let basic_login =
+    "acct:test-drive-d31825e3d1a345739c7c1@71699f05-a30e-4ecb-a529-5b79a43742c6";
 
-    let options = {
-        url,
-        org: 'test-drive-d31825e3d1a345739c7c1',
-        httpMethod: "GET",
-        contentType: "application/json",
+  let options = {
+    url,
+    org: "test-drive-d31825e3d1a345739c7c1",
+    httpMethod: "GET",
+    contentType: "application/json",
+  };
+
+  var requestOptions = {
+    method: options.httpMethod,
+    headers: {
+      Authorization: `Basic ` + basic_login,
+      "nep-organization": options.org,
+      "Content-Type": options.contentType,
+      Accept: options.contentType,
+    },
+  };
+
+  const response = await fetch(options.url, requestOptions);
+
+  const status = response.status;
+
+  if (status === 200) {
+    let data = await response.json();
+    return {
+      status,
+      data,
     };
-
-    var requestOptions = {
-        method: options.httpMethod,
-        headers: {
-        Authorization: `Basic ` + basic_login,
-        "nep-organization": options.org,
-        "Content-Type": options.contentType,
-        "Accept": options.contentType,
-        },
+  } else {
+    let data = await response.json();
+    return {
+      status,
+      data,
     };
-
-    const response = await fetch(options.url, requestOptions);
-
-    const status = response.status;
-
-    if (status === 200) {
-        let data = await response.json();
-        return {
-            status,
-            data,
-        }
-    } else {
-        let data = await response.json();
-        return {
-            status,
-            data,
-        }
-    }
-}
+  }
+};
 
 export default getSiteById;
