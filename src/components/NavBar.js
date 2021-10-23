@@ -44,8 +44,8 @@ const navigation = [
               <a href="/">
                 <span className="sr-only">Workflow</span>
                 <img
-                  className="h-10 w-auto"
-                  src="https://tailwindui.com/img/logos/workflow-mark.svg?color=white"
+                  style={{height:"100px", width:"200px"}}
+                  src='/space_helmet.png'
                   alt=""
                 />
               </a>

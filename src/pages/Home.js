@@ -126,8 +126,22 @@ export default function Home(props) {
                 OUR STORY
               </h2>
 
+              <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center my-24 text-white">
+              We believe that your shopping should be as smart as you are. 
+                Experience an intelligent shopping platform
+                that utilizes AR and
+                machine-learning to find the product you need.
+                Crypto friendly and NCR-services compatible.
+                
+              </h2>
+
               <h2 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center my-24 text-white">
                 HACK GT
+              </h2>
+
+              <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center my-24 text-white">
+              Proudly sleep-deprived to bring you this platform.
+                
               </h2>
             </div>
           </div>
