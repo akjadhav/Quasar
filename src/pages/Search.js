@@ -1,7 +1,12 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
+import * as searchItem from '../utils/searchItem'
 
   export default function Search() {
+    const onChangeHandler = (event) => {
+      searchItem.handleSearch(event);
+    };
+
     return (
     <div>
       <NavBar />
@@ -9,7 +14,7 @@ import NavBar from '../components/NavBar'
 
         <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">SEARCH</h2>
 
-        <div className="flex mx-auto w-10/12 px-24">
+        <div className="flex mx-auto w-10/12 mx-24">
           <label htmlFor="search" className="sr-only">
             Search
           </label>
@@ -33,8 +38,10 @@ import NavBar from '../components/NavBar'
             </label>
             <input
               type="file"
+              name="file"
               id="upload-ar"
               className="hidden" 
+              onChange={onChangeHandler}
             />
           </div>
           <div className="mt-40">
