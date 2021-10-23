@@ -14,6 +14,9 @@ import NavBar from '../components/NavBar'
                 className=""
               />
             </div>
+            <div className="w-3/12 m-24">
+              <model-viewer class="model" src="https://storage.echo3d.co/fragrant-sky-5504/37e7e2b4-6b02-41bc-b55b-4829856a8979.glb" alt="Miku Hatsune.glb" preload="" background-color="#203864" shadow-intensity="1" camera-controls="" auto-rotate="" ios-src="https://storage.echo3d.co/fragrant-sky-5504/9155b780-84a2-4303-8116-01d212faaa98.usdz" quick-look-browsers="safari chrome"></model-viewer>
+            </div>
             <div className="w-6/12">
               <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">HATSUNE</h2>
 

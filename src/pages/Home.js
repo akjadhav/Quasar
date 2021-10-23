@@ -1,59 +1,31 @@
 import React, { useEffect, useState } from 'react'
 import NavBar from '../components/NavBar'
 import * as test from '../utils/NCR_API.js'
-
+import { test2 } from '../utils/echo3D'
 import { Redirect } from 'react-router'
 import getSiteById from '../utils/getSiteById'
 import { useHistory } from 'react-router'
 import { auth, database } from '../utils/firebase'
-import { Button } from '@mui/material'
+import { Button, Paper } from '@mui/material'
+import { putItem } from '../utils/database_api'
+import Image from 'material-ui-image'
 
 test.init_API();
 
-const products = [
-    {
-      id: 1,
-      name: 'Basic Tee',
-      href: '#',
-      imageSrc: 'https://tailwindui.com/img/ecommerce-images/product-page-01-related-product-01.jpg',
-      imageAlt: "Front of men's Basic Tee in black.",
-      price: '$35',
-      color: 'Black',
-    },
-    {
-        id: 2,
-        name: 'Chair',
-        href: '#',
-        imageSrc: 'https://m.media-amazon.com/images/I/41tCIsGV8UL.jpg',
-        imageAlt: "A brown chair",
-        price: '$75',
-        color: 'Brown',
-      },
-      {
-        id: 3,
-        name: 'Hatsune Miku',
-        href: '/itemdetail',
-        imageSrc: 'https://resize.cdn.otakumode.com/exq/65/820.1093/shop/product/fd764746a7054f1096a3f52dab6953f3.jpg',
-        imageAlt: "Waifu",
-        price: '$200',
-        color: 'Brown',
-      },
-  ]
-
-  export default function Home() {
+  export default function Home(props) {
+    //putItem("Hatsune Miku", "2", 'https://resize.cdn.otakumode.com/exq/65/820.1093/shop/product/fd764746a7054f1096a3f52dab6953f3.jpg', 'https://storage.echo3d.co/fragrant-sky-5504/37e7e2b4-6b02-41bc-b55b-4829856a8979.glb', 'https://storage.echo3d.co/fragrant-sky-5504/9155b780-84a2-4303-8116-01d212faaa98.usdz','$200', 'Hatsune Miku Figure');
     const [isAuth, setAuth] = useState(false)
+    const [products, setProducts] = useState(null)
     const history = useHistory()
 
     useEffect(() => {
-        const unsubscribe = auth.onAuthStateChanged(user => {
-            if (user) {
-                setAuth(true)
-            } else {
-                history.replace("/")
-            }
-        })
-        return unsubscribe
-    }, [])
+        database
+        .ref('items/')
+        .on('value', (snapshot) => {
+            let data = snapshot.val();
+            setProducts(data);
+        });
+    },[])
 
     const handleAddScan = () => {
         const updates = {}
@@ -76,6 +48,12 @@ const products = [
             .catch(error => alert(error.message))
         }   
     }
+
+    const handleImageClick = (product) => {
+        history.replace("/itemdetail")
+        props.setCurrItem(product)
+    }
+
     return (
     <div>
       <NavBar />
@@ -95,34 +73,37 @@ const products = [
             className="w-full h-full"
           />
 
-
           <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">NCR AR STORE</h2>
   
           <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 mx-24 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-20">
-            {products.map((product) => (
-              <div key={product.id} className="group relative">
-                <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
-                  <img
-                    src={product.imageSrc}
-                    alt={product.imageAlt}
-                    className="w-full h-full object-center object-cover lg:w-full lg:h-full"
-                  />
+              {console.log(products)}
+            {products && products.map((product, i) => (
+                 <Paper key={i} onClick={() => handleImageClick(product)}>
+                <div key={i} className="group relative">
+                    <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
+                    <img
+                        src={product.img_src}
+                        alt={product.desc}
+                        className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+                    />
+                    </div>
+                    <div className="mt-4 flex justify-between">
+                    <div>
+                        <h3 className="text-sm text-gray-700">
+                        <a>
+                            <span aria-hidden="true" className="absolute inset-0" />
+                            {product.name}
+                        </a>
+                        </h3>
+                        <p className="mt-1 text-sm text-gray-500">{product.color}</p>
+                    </div>
+                    <p className="text-sm font-medium text-gray-900">{product.price}</p>
+                    </div>
                 </div>
-                <div className="mt-4 flex justify-between">
-                  <div>
-                    <h3 className="text-sm text-gray-700">
-                      <a href={product.href}>
-                        <span aria-hidden="true" className="absolute inset-0" />
-                        {product.name}
-                      </a>
-                    </h3>
-                    <p className="mt-1 text-sm text-gray-500">{product.color}</p>
-                  </div>
-                  <p className="text-sm font-medium text-gray-900">{product.price}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+                </Paper>
+                ))}
+            </div>
+            
 
           <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-gray-900">OUR STORY</h2>
 
