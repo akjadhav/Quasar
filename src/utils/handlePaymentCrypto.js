@@ -2,12 +2,15 @@ import React from "react";
 const Web3 = require("web3");
 let userAddress;
 let flag = false;
+let isNCR = false;
 
-export function openWeb3(event) {
-  alert("Connecting to your Ethereum wallet");
+export function openWeb3(event, ncrCoin) {
+  // alert("Connecting to your Ethereum wallet");
 
   window.web3 = new Web3(window.ethereum);
   window.ethereum.enable();
+
+  isNCR = ncrCoin;
 
   // Initiate login verification
   connectionSuccess().then((response) => {
@@ -25,19 +28,74 @@ async function makePurchase() {
   let price = 100000000000000;
 
   // resolve the ENS name
+  let chain = 'ropsten';
+  let transaction;
+  if (isNCR)
+  {
+    let tokenAddr = '0xC666d239cbda32AA7ebCA894B6dC598dDb881285';
+    let toAddr = '0xb4BAEfAc5199E71F8ADfBCE2240693Fd21869a33';
+    // Use Big Number
+    // Use BigNumber
+    let decimals = window.web3.utils.toBN(18);
+    let amount = window.web3.utils.toBN(100);
+    
+    let minABI = [
+      // transfer
+      {
+        "constant": false,
+        "inputs": [
+          {
+            "name": "_to",
+            "type": "address"
+          },
+          {
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "transfer",
+        "outputs": [
+          {
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "type": "function"
+      }
+    ];
+
+    // Get ERC20 Token contract instance
+    let contract = new window.web3.eth.Contract(minABI, tokenAddr);
+
+    // calculate ERC20 token amount
+    let value = amount.mul(window.web3.utils.toBN(2).pow(decimals));
+
+    // call transfer function
+    contract.methods.transfer(toAddr, value).send({from: userAddress})
+    .on('transactionHash', function(hash){
+      console.log(hash);
+    });
+  }
+  else
+  {
   let toAddr = await window.web3.eth.ens.getAddress("hackgt2021market.eth");
   console.log(toAddr);
-
-  // using the promise
-  window.web3.eth
-    .sendTransaction({
-      from: userAddress,
-      to: toAddr,
-      value: price,
-    })
+    transaction = 
+      {
+        to: toAddr,
+        chain: 'ropsten',
+        from: userAddress,
+        value: price
+      }
+      window.web3.eth
+    .sendTransaction(
+      transaction
+    )
     .then(function (receipt) {
       console.log(receipt);
     });
+  }
+
 }
 
 async function connectionSuccess() {
