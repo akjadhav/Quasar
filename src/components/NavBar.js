@@ -1,5 +1,4 @@
 import React from 'react'
-import { MailIcon } from '@heroicons/react/solid'
 
 /* This example requires Tailwind CSS v2.0+ */
 const navigation = [
