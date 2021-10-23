@@ -44,6 +44,7 @@ const products = [
   export default function Home() {
     const [isAuth, setAuth] = useState(false)
     const history = useHistory()
+    const id = 1
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
@@ -68,7 +69,7 @@ const products = [
     }
     return (
     <div>
-      <NavBar />
+      <NavBar id={id} />
 
       {isAuth && <div>
                 <Button onClick={handleSignOut}>Sign Out</Button>
