@@ -2,6 +2,9 @@ import React from 'react'
 import Home from './pages/Home'
 import About from './pages/About'
 import Users from './pages/Users'
+import Login from './pages/Login'
+import { Button } from '@mui/material'
+import {auth, database} from './utils/firebase'
 
 import {
   BrowserRouter as Router,
@@ -13,12 +16,12 @@ import {
 function App() {
   return (
     <div>
-      <Router>
+    <Router>
       <div>
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/home">Home</Link>
             </li>
             <li>
               <Link to="/about">About</Link>
@@ -32,6 +35,9 @@ function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/home">
+            <Home /> 
+          </Route>
           <Route path="/about">
             <About />
           </Route>
@@ -39,7 +45,7 @@ function App() {
             <Users />
           </Route>
           <Route path="/">
-            <Home />
+            <Login />
           </Route>
         </Switch>
       </div>
