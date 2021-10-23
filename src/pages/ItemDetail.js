@@ -1,7 +1,12 @@
 import React from 'react'
 import NavBar from '../components/NavBar'
+import * as handlePaymentCrypto from '../utils/handlePaymentCrypto'
 
   export default function ItemDetail() {
+    const onPurchaseCryptoClick = (event) => {
+      handlePaymentCrypto.openWeb3(event);
+    };
+
     return (
     <div>
       <NavBar />
@@ -20,7 +25,13 @@ import NavBar from '../components/NavBar'
               <button
                 className="inline-block bg-green-600 py-2 w-5/12 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-green-400"
               >
-                Cart
+                Add to Cart
+              </button>
+              <button
+                className="inline-block bg-green-600 py-2 w-5/12 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-green-400"
+                onClick={onPurchaseCryptoClick}
+              >
+                Buy With Crypto
               </button>
             </div>      
           </div>
