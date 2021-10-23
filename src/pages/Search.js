@@ -1,12 +1,31 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import NavBar from '../components/NavBar'
 import * as searchItem from '../utils/searchItem'
+import { useHistory } from 'react-router'
+import { auth, database } from '../utils/firebase'
 
-  export default function Search() {
-    const onChangeHandler = (event) => {
-      searchItem.handleSearch(event);
-    };
+export default function Search() {
+  const [isAuth, setIsAuth] = useState(false)
+  const history = useHistory()
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+        if (user) {
+          setIsAuth(true)
+        } else {
+          history.replace('/')
+        }
+        return unsubscribe;
+      });
+  },[])
+
+  const onChangeHandler = (event) => {
+    searchItem.handleSearch(event);
+  };
+
+  if (!isAuth) {
+    return(<div></div>);
+  } else {
     return (
     <div>
       <NavBar />
@@ -53,4 +72,4 @@ import * as searchItem from '../utils/searchItem'
     </div>
     )
   }
-  
+}

@@ -11,7 +11,7 @@ export default function Login() {
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             if (user) {
-                <Redirect to='/home' />
+                history.push('/home')
             }
         })
         return unsubscribe
