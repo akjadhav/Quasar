@@ -7,6 +7,7 @@ import ItemDetailDynamic from './pages/ItemDetailDynamic'
 import ItemDetailChair from './pages/ItemDetailChair'
 import Search from './pages/Search'
 import Login from './pages/Login'
+import Cart from './pages/Cart'
 import { Button } from '@mui/material'
 import {auth, database} from './utils/firebase'
 
@@ -40,12 +41,18 @@ function App() {
             <li>
               <Link to="/search">Search</Link>
             </li>
+            <li>
+              <Link to="/cart">cart</Link>
+            </li>
           </ul>
         </nav>
 
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
+          <Route path="/cart">
+            <Cart />
+          </Route>
           <Route path="/search">
             <Search />
           </Route>
