@@ -47,17 +47,6 @@ export default function Home(props) {
     return unsubscribe;
   };
 
-  const handleSignOut = () => {
-    if (isAuth) {
-      auth
-        .signOut()
-        .then(() => {
-          history.replace("/");
-        })
-        .catch((error) => alert(error.message));
-    }
-  };
-
   const handleImageClick = (product) => {
     props.handleCurrItemChange(product);
     history.replace("/itemdetail");
@@ -70,9 +59,10 @@ export default function Home(props) {
       <div>
         <NavBar id={id} />
 
+        {'DONT MOVE THIS BUTTON OR ELSE THINGS WILL BREAK'}
         {isAuth && (
           <div>
-            <Button onClick={handleSignOut}>Sign Out</Button>
+            <Button>Sign Out</Button>
             <h1>THIS IS THE HOMEPAGE</h1>
           </div>
         )}
@@ -80,65 +70,66 @@ export default function Home(props) {
         <Button onClick={handleAddScan}>Add Scan</Button>
 
         <div className="bg-gradient-to-b from-gray-900 to-blue-900 relative z-40">
-          <div className="max-w-2xl mx-auto px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 -my-32">
+          <div className="stars">
+            <div className="max-w-2xl mx-auto px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8 -my-32">
 
-            <h2 className="text-6xl font-extrabold tracking-tight text-center my-0 text-white">
-              NCR AR STORE
-            </h2>
+              <h2 className="text-6xl py-10 drop-shadow-lg font-extrabold tracking-tight text-center my-0 text-white">
+                NCR API STORE
+              </h2>
 
-            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 mx-24 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-20">
-              {console.log(products)}
-              {products &&
-                products.map((product, i) => (
-                  <Paper key={i} onClick={() => handleImageClick(product)}>
-                    <div key={i} className="group relative">
-                      <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
-                      <model-viewer
-                        style = {{width: "280px", height: "375px", paddingTop: "80px", background:"none"}}
-                        class="model"
-                        src={product.mod_src}
-                        alt={product.description + " glb"}
-                        preload=""
-                        background-color={modelBackgroundColor}
-                        shadow-intensity="1"
-                        auto-rotate=""
-                        ios-src={product.mod_ios_src}
-                        quick-look-browsers="safari chrome"
-                        rotation-per-second={(i % 2 == 0)? "500%" : "-500%"}
-                        field-of-view="70deg"
-                      ></model-viewer>
-                      </div>
-                      <div className="mt-4 flex justify-between">
-                        <div>
-                          <h3 className="text-sm text-gray-700">
-                            <a>
-                              <span
-                                aria-hidden="true"
-                                className="absolute inset-0"
-                              />
-                              {product.name}
-                            </a>
-                          </h3>
-                          <p className="mt-1 p-2 font-medium text-gray-500">
-                            {product.color}
+              <div className="mt-6 drop-shadow-lg grid grid-cols-1 gap-y-10 gap-x-6 mx-24 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-20">
+                {console.log(products)}
+                {products &&
+                  products.map((product, i) => (
+                    <Paper key={i} onClick={() => handleImageClick(product)}>
+                      <div key={i} className="group relative">
+                        <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-96 lg:aspect-none">
+                          <model-viewer
+                            style={{ width: "280px", height: "375px", paddingTop: "80px", background: "none" }}
+                            class="model"
+                            src={product.mod_src}
+                            alt={product.description + " glb"}
+                            preload=""
+                            background-color={modelBackgroundColor}
+                            shadow-intensity="1"
+                            auto-rotate=""
+                            ios-src={product.mod_ios_src}
+                            quick-look-browsers="safari chrome"
+                            rotation-per-second={(i % 2 == 0) ? "500%" : "-500%"}
+                            field-of-view="70deg"
+                            auto-rotate-delay='0'>
+                            <div slot="progress-bar" />
+                          </model-viewer>
+                        </div>
+                        <div className="mt-4 p-8 flex justify-between">
+                          <div>
+                            <h3 className="text-xl font-extrabold text-gray-700">
+                              <a>
+                                <span
+                                  aria-hidden="true"
+                                  className="absolute inset-0"
+                                />
+                                <p>{product.name}</p>
+                              </a>
+                            </h3>
+                          </div>
+                          <p className="text-xl font-medium text-gray-900">
+                            {product.price}
                           </p>
                         </div>
-                        <p className="text-sm p-2 font-medium text-gray-900">
-                          {product.price}
-                        </p>
                       </div>
-                    </div>
-                  </Paper>
-                ))}
+                    </Paper>
+                  ))}
+              </div>
+
+              <h2 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center my-24 text-white">
+                OUR STORY
+              </h2>
+
+              <h2 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center my-24 text-white">
+                HACK GT
+              </h2>
             </div>
-
-            <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-white">
-              OUR STORY
-            </h2>
-
-            <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-white">
-              HACK GT
-            </h2>
           </div>
         </div>
       </div>

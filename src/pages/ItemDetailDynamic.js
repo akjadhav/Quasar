@@ -49,7 +49,7 @@ export default function ItemDetail(props) {
     props.handleCurrItemChange(product);
     history.replace("/itemdetail");
   };
-  
+
   if (!isAuth) {
     return <div></div>;
   } else {
@@ -73,7 +73,7 @@ export default function ItemDetail(props) {
                   auto-rotate=""
                   ios-src={currItem.mod_ios_src}
                   quick-look-browsers="safari chrome"
-                ></model-viewer>
+                ><div slot="progress-bar"/></model-viewer>
               </div>
               )}
               { !currItem.mod_src && (
