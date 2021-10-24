@@ -20,17 +20,15 @@ We believe that your shopping should be as smart as you are. Experience an intel
 
 
 # Inspiration
-As brick-and-mortar stores close across the country, beaten by online retail giants like Amazon and Walmart, shoppers are forced to purchase online. While digital shopping can be more convenient and accessible to millions, consumers miss out on the interaction with products in their own physical environment and finding products can be tough when you do not know what to search for. This is why we have created *NAME*, a web app available on desktop, iOS, and Android that uses augmented reality, machine learning, blockchain, and crypto to modernize shopping - making a new interplay between the physical world and digital shopping platforms.
+As brick-and-mortar stores close across the country, beaten by online retail giants like Amazon and Walmart, shoppers are forced to purchase online. While digital shopping can be more convenient and accessible to millions, consumers miss out on the interaction with products in their own physical environment and finding products can be tough when you do not know what to search for. This is why we have created **NAME**, a web app available on desktop, iOS, and Android that uses augmented reality, machine learning, blockchain, and crypto to modernize shopping - making a new interplay between the physical world and digital shopping platforms.
 
 
 # How We Built It
-1. 3D models/AR (using Echo3D)
-2. Authentication (using Firebase)
-3. Machine Learning (using Tensorflow.JS)
-4. Crypto Payments (using Crypto.js)
-5. private blockchain acting as a Quality control ledger for products
-
-React JS
+1. ReactJS
+2. 3D models & Augmented Reality (using Echo3D)
+3. Authentication & Database (using Firebase)
+4. Machine Learning (using TensorFlow.js)
+5. Crypto Payments (using Crypto.js)
 
 
 # Team
