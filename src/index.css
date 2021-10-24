@@ -52,7 +52,7 @@
 
 .stars {
   background: transparent url(/src/images/stars.png) repeat top center;
-  z-index: 0;
+  z-index: 10;
 }
 
 .twinkling {
