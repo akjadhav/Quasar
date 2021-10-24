@@ -45,7 +45,7 @@ const navigation = [
                 <span className="sr-only">Workflow</span>
                 <img
                   style={{height:"100px", width:"200px"}}
-                  src='/space_helmet.png'
+                  src='/quasar2.png'
                   alt=""
                 />
               </a>

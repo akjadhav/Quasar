@@ -72,7 +72,7 @@ export default function Home(props) {
 
         <div className="bg-gradient-to-b from-gray-900 to-purple-900 relative z-40">
           <div className="stars">
-            <div className="max-w-2xl mx-auto px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8 -my-32">
+            <div className="max-w-2xl mx-auto px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8 -my-32 z-0">
 
               <h2 className="text-8xl mb-20 drop-shadow-lg font-extrabold tracking-tight text-center my-0 text-white">
                 HACKGT STORE
