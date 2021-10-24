@@ -6,6 +6,9 @@ import { useHistory } from "react-router";
 import "@google/model-viewer/dist/model-viewer";
 import { Card, Paper, Box, Typography, Button, Modal } from "@mui/material";
 
+let blockchainData = require('../utils/blockchain/privateBlockchain.json').blockchain;
+console.log(blockchainData);
+
 export default function ItemDetail(props) {
   const [products, setProducts] = useState(null);
   const currItem = props.currItem;
@@ -159,10 +162,30 @@ export default function ItemDetail(props) {
               </div>
 
               {/* stats */}
-              <div className="flex mt-14 bg-gradient-to-b from-green-600 to-blue-900 rounded-md" style={{ height: "500px" }}>
+              <div className="grid grid-cols-1 my-14 bg-gradient-to-b from-green-600 to-blue-900 rounded-md">
                 <h2 className="w-full text-6xl font-extrabold tracking-tight text-center my-10 text-white">
                   STATS
                 </h2>
+                <div className="text-md w-full text-white ">
+                  <p className="mb-4">
+                    Lifecycle of product
+                    <br />
+                    * Each entry represents a unique QC of the product, including the unique hash ID that maps to the public QC ledger
+                  </p>
+                  { blockchainData.map((block, i)=> (
+                    <div key={i} className="mb-2">
+                      <p>
+                      { block.timestamp }
+                      </p>
+                      <p className="text-xs">
+                      { block.hash }
+                      </p>
+                      
+                    </div>
+
+                  ))}
+
+                </div>
               </div>
             </div>
             <h1 className="text-6xl font-extrabold tracking-tight text-center my-24 text-white">
