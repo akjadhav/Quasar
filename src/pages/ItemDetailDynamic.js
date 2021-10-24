@@ -20,6 +20,15 @@ export default function ItemDetail(props) {
   const handleOpen = () => setIsModal(true);
   const handleClose = () => setIsModal(false);
 
+  const getRandomInt = (max) => {
+    return Math.floor(Math.random() * max);
+  }
+  
+  let sample = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+  let num1 = sample.splice(getRandomInt(9), 1)[0]
+  let num2 = sample.splice(getRandomInt(8), 1)[0]
+  let num3 = sample.splice(getRandomInt(7), 1)[0]
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
@@ -194,8 +203,9 @@ export default function ItemDetail(props) {
             <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 mx-48 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-10">
               {console.log(products)}
               {products &&
-                products.map((product, i) => (
-                  <Paper key={i} onClick={() => handleImageClick(product)}>
+                products.map((product, i) => {
+                  if (i === num1 || i === num2 || i === num3) {
+                    return <Paper key={i} onClick={() => handleImageClick(product)}>
                     {/* each cell */}
                     <div key={i} onClick={() => scrollToTop()} className="group p-4 drop-shadow-2xl relative cell">
                       <div className="w-full rounded-xl min-h-80 bg-gradient-to-b from-blue-900 to-green-300 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-80 lg:h-112 lg:aspect-none cell">
@@ -232,7 +242,8 @@ export default function ItemDetail(props) {
                       </div>
                     </div>
                   </Paper>
-                ))}
+                  }
+              })}
             </div>
           </div>
         </div>

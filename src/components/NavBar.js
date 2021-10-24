@@ -35,7 +35,6 @@ const navigation = [
       }
     };
 
-    console.log(props.id)
     return (
       <header className="absolute inset-y-0 top-0 w-screen bg-gray-900 h-96 z-0">
         <nav className="max-w-7xl mx-auto mt-4 px-4 sm:px-6 lg:px-8" aria-label="Top">
