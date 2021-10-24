@@ -44,8 +44,8 @@ const navigation = [
               <a href="/">
                 <span className="sr-only">Workflow</span>
                 <img
-                  style={{height:"100px", width:"200px"}}
-                  src='/quasar2.png'
+                  style={{height:"90px", width:"500px"}}
+                  src='/quasar4.png'
                   alt=""
                 />
               </a>
