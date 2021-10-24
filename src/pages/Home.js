@@ -10,6 +10,8 @@ import { Button, Paper } from "@mui/material";
 import { putItem } from "../utils/database_api";
 import Image from "material-ui-image";
 
+import MouseTooltip from 'react-sticky-mouse-tooltip';
+
 test.init_API();
 
 export default function Home(props) {
@@ -52,6 +54,7 @@ export default function Home(props) {
     history.replace("/itemdetail");
   };
 
+
   if (!isAuth) {
     return <div></div>;
   } else {
@@ -70,10 +73,10 @@ export default function Home(props) {
         <Button onClick={handleAddScan}>Add Scan</Button>
 
         <div className="bg-gradient-to-b from-gray-900 to-purple-900 relative z-40">
-          <div className="">
+          <div className="stars">
             <div className="max-w-2xl mx-auto px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8 -my-32">
 
-              <h2 className="text-8xl pb-20 drop-shadow-lg font-extrabold tracking-tight text-center my-0 text-white">
+              <h2 className="text-8xl mb-20 drop-shadow-lg font-extrabold tracking-tight text-center my-0 text-white">
                 HACKGT STORE
               </h2>
 
@@ -84,8 +87,8 @@ export default function Home(props) {
                   products.map((product, i) => (
                     <Paper key={i} onClick={() => handleImageClick(product)}>
                       {/* each cell */}
-                      <div key={i} className="group p-4 drop-shadow-2xl relative">
-                        <div className="w-full rounded-xl min-h-80 bg-gradient-to-b from-blue-900 to-green-300 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-80 lg:h-96 lg:aspect-none">
+                      <div key={i} className="group p-4 drop-shadow-2xl relative cell">
+                        <div className="w-full rounded-xl min-h-80 bg-gradient-to-b from-blue-900 to-green-300 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-80 lg:h-112 lg:aspect-none cell">
                           <model-viewer
                             style={{ width: "280px", height: "390px", paddingTop: "20px", paddingBottom: "20px", background: "none" }}
                             class="model"
@@ -127,12 +130,12 @@ export default function Home(props) {
               </h2>
 
               <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center my-24 text-white">
-              We believe that your shopping should be as smart as you are. 
+                We believe that your shopping should be as smart as you are.
                 Experience an intelligent shopping platform
                 that utilizes AR and
                 machine-learning to find the product you need.
                 Crypto friendly and NCR-services compatible.
-                
+
               </h2>
 
               <h2 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center my-24 text-white">
@@ -140,13 +143,14 @@ export default function Home(props) {
               </h2>
 
               <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center my-24 text-white">
-              Proudly sleep-deprived to bring you this platform.
-                
+                Proudly sleep-deprived to bring you this platform.
+
               </h2>
             </div>
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
+
     );
   }
 }

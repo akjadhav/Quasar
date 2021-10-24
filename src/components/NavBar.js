@@ -51,16 +51,6 @@ const navigation = [
               </a>
             </div>
             <div className="flex mx-auto w-full px-24">
-              <label htmlFor="search" className="sr-only">
-               Search
-              </label>
-              <input
-                type="search"
-                name="search"
-                id="search"
-                className="shadow-sm focus:ring-indigo-600 focus:border-indigo-600 block w-full sm:text-sm border-gray-300 rounded-md"
-                placeholder="Pencils"
-              />
             </div>
             <div className="ml-10 flex space-x-4">
               <a

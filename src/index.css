@@ -6,7 +6,7 @@
 * {
   margin: 0;
   padding: 0;
-  cursor: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/9632/happy.png"), auto;
+  cursor: url("http://www.rw-designer.com/cursor-extern.php?id=110025"), auto;
 }
 
 .title h1 {
@@ -59,4 +59,17 @@
   background: transparent url(/src/images/twinkling.png) repeat top center;
   z-index: 1;
   animation: move-twink-back 200s linear infinite;
+}
+
+h2:hover {
+  transform: scale(1.09);
+}
+
+.cell:hover {
+  transform: scale(1.2);
+}
+
+.cell:hover p {
+  transform: scale(0.8);
+  margin-top: -20px;
 }
