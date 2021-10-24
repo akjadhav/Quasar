@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import NavBar from "./components/NavBar"
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Account from "./pages/Account";
@@ -45,31 +46,12 @@ function App() {
 
   return (
     <div>
+      <div style={{ marginBottom: "150px" }}>
+        <NavBar></NavBar>
+      </div>
+
       <Router>
         <div>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/home">Home</Link>
-              </li>
-              <li>
-                <Link to="/about">About</Link>
-              </li>
-              <li>
-                <Link to="/users">Users</Link>
-              </li>
-              <li>
-                <Link to="/itemdetail">detail</Link>
-              </li>
-              <li>
-                <Link to="/search">Search</Link>
-              </li>
-              <li>
-                <Link to="/cart">cart</Link>
-              </li>
-            </ul>
-          </nav>
-
           {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
           <Switch>
@@ -92,7 +74,7 @@ function App() {
               <Account />
             </Route>
             <Route path="/">
-              <Login setLoginMessage={setLogInMessage} setLoginSeverity={setLogInSeverity} setIsLoginAlert={setIsLogInAlert} setRegisterMessage={setRegisterMessage} setRegisterSeverity={setRegisterSeverity} setIsRegisterAlert={setIsRegisterAlert}/>
+              <Login setLoginMessage={setLogInMessage} setLoginSeverity={setLogInSeverity} setIsLoginAlert={setIsLogInAlert} setRegisterMessage={setRegisterMessage} setRegisterSeverity={setRegisterSeverity} setIsRegisterAlert={setIsRegisterAlert} />
             </Route>
           </Switch>
         </div>

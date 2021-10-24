@@ -75,7 +75,7 @@ export default function Home(props) {
             <div className="max-w-2xl mx-auto px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8 -my-32">
 
               <h1 className="text-8xl mb-20 drop-shadow-lg font-extrabold tracking-tight text-center my-0 text-white">
-                HACKGT STORE
+                QUASAR
               </h1>
 
               {/* product cells div */}
@@ -123,11 +123,11 @@ export default function Home(props) {
                   ))}
               </div>
 
-              <h2 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center my-24 text-white">
+              <h2 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center mt-24 text-white">
                 OUR STORY
               </h2>
 
-              <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center my-24 text-white">
+              <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center  my-8 text-white">
                 We believe that your shopping should be as smart as you are.
                 Experience an intelligent shopping platform
                 that utilizes AR and
@@ -136,11 +136,11 @@ export default function Home(props) {
 
               </h2>
 
-              <h2 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center my-24 text-white">
+              <h2 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center mt-24 text-white">
                 HACK GT
               </h2>
 
-              <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center my-24 text-white">
+              <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center my-8 text-white">
                 Proudly sleep-deprived to bring you this platform.
 
               </h2>

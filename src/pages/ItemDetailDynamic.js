@@ -61,6 +61,18 @@ export default function ItemDetail(props) {
     history.replace("/itemdetail");
   };
 
+  const styleModal = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    borderRadius: '20px',
+    boxShadow: 24,
+    p: 4,
+  };
+
   if (!isAuth) {
     return <div></div>;
   } else {
@@ -71,25 +83,7 @@ export default function ItemDetail(props) {
           <div className="stars">
             <div className="mx-auto rounded-lg block m-24 text-center bg-gray-100 w-10/12 h-auto">
               <Card>
-                <div className="flex bg-gradient-to-b from-orange to-magenta-900" style={{ height: "600px" }}>
-                  <div>
-                    <a
-                      href="#"
-                      className="inline-block bg-white py-2 px-4 border border-transparent rounded-md text-base font-medium text-indigo-900 hover:bg-indigo-50"
-                      onClick={handleOpen}
-                    >
-                      AR
-                    </a>
-                    <Modal
-                      open={isModal}
-                      onClose={handleClose}
-                    >
-                      <Card>
-                        <h1>Scan With Your Phone!</h1>
-                        <img src={currItem.img_src} alt='qr'></img>
-                      </Card>
-                    </Modal>
-                  </div>
+                <div className="flex bg-gradient-to-b from-orange to-magenta-900" style={{ height: "700px" }}>
                   {currItem.mod_src && (
                     <div className="w-6/12 h-96 border-red-700 m-14 model">
                       <model-viewer
@@ -137,6 +131,28 @@ export default function ItemDetail(props) {
                     >
                       Buy With NCR Coin
                     </button>
+                    <div>
+                      <a
+                        href="#"
+                        className="inline-block bg-white w-9/12 mt-10 py-2 px-4 border border-transparent rounded-md text-base font-medium text-indigo-900 hover:bg-indigo-50"
+                        onClick={handleOpen}
+                      >
+                        View in AR on your phone
+                      </a>
+                      <Modal
+                        open={isModal}
+                        onClose={handleClose}
+                      >
+                        <Card>
+                          <Box sx={styleModal}>
+                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                              <h2 className="text-2xl font-extrabold text-center">Scan With Your Phone</h2>
+                              <img className="mx-auto" src={currItem.img_src} alt='qr'></img>
+                            </Typography>
+                          </Box>
+                        </Card>
+                      </Modal>
+                    </div>
                   </div>
                 </div>
               </Card>
