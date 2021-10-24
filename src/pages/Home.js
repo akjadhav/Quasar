@@ -10,12 +10,10 @@ import { Button, Paper } from "@mui/material";
 import { putItem } from "../utils/database_api";
 import Image from "material-ui-image";
 
-import MouseTooltip from 'react-sticky-mouse-tooltip';
-
 test.init_API();
 
 export default function Home(props) {
-  //putItem("Hatsune Miku", "2", 'https://resize.cdn.otakumode.com/exq/65/820.1093/shop/product/fd764746a7054f1096a3f52dab6953f3.jpg', 'https://storage.echo3d.co/fragrant-sky-5504/37e7e2b4-6b02-41bc-b55b-4829856a8979.glb', 'https://storage.echo3d.co/fragrant-sky-5504/9155b780-84a2-4303-8116-01d212faaa98.usdz','$200', 'Hatsune Miku Figure');
+  putItem("Alarm Clock", "0", 'https://storage.echo3d.co/flat-poetry-6028/24f46462-fe01-470f-a0c7-ab22875061cf.png', 'https://storage.echo3d.co/flat-poetry-6028/250639c3-f867-4b0c-9731-2b82b62394b8.glb', 'https://storage.echo3d.co/flat-poetry-6028/6e556520-1ffa-4784-90ba-61cd347a36b3.usdz','$10', 'Alarm Clock to Wake the Deepest of Sleepers');
   const [products, setProducts] = useState(null);
   const history = useHistory();
   const [isAuth, setIsAuth] = useState(false);

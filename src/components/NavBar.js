@@ -54,7 +54,7 @@ const navigation = [
             </div>
             <div className="ml-10 flex space-x-4">
               <a
-                href="#"
+                href="../account"
                 className="inline-block bg-indigo-900 py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-opacity-75"
               >
                 Account
