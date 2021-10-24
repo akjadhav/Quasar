@@ -32,7 +32,7 @@ As brick-and-mortar stores close across the country, beaten by online retail gia
 2. 3D models & Augmented Reality (using Echo3D)
 3. Authentication & Database (using Firebase)
 4. Machine Learning (using TensorFlow.js)
-5. Crypto Payments (using Crypto.js)
+5. Crypto Payments (using CryptoJS)
 
 
 # Team
