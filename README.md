@@ -19,10 +19,12 @@ We believe that your shopping should be as smart as you are. Experience an intel
 - **ML-powered** smarter search - users can search for products by scanning images of related products, eliminating the need for keyword searches
 - Have **peace of mind** knowing the user will receive top quality products verified through a private blockchain acting as a quality control ledger for products
 - Enables **crypto payments** for products, enabling a larger audience to purchase products
+- **Blockchain-based** QC ledger to keep track of the lifecycle of a product from manufacturing to production to store shelves
 
 
 # Inspiration
 As brick-and-mortar stores close across the country, beaten by online retail giants like Amazon and Walmart, shoppers are forced to purchase online. While digital shopping can be more convenient and accessible to millions, consumers miss out on the interaction with products in their own physical environment and finding products can be tough when you do not know what to search for. This is why we have created **Quasar**, a web app available on desktop, iOS, and Android that uses augmented reality, machine learning, blockchain, and crypto to modernize shopping - making a new interplay between the physical world and digital shopping platforms.
+
 
 
 # How We Built It
