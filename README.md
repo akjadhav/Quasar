@@ -12,11 +12,11 @@ We believe that your shopping should be as smart as you are. Experience an intel
 
 
 # What It Does
-- Modernizes the digital shopping experience, leveraging augmented reality (AR) and machine learning (ML) techniques to bring digital shopping to your physical world
-- Helps a user visualize a product in their own physical environment through 3D product models and augmented reality
-- Enables ML-powered smarter search - users can search for products by scanning images of related products, eliminating the need for keyword searches
-- Have peace of mind knowing the user will receive top quality products verified through a private blockchain acting as a quality control ledger for products
-- Enables crypto payments for products, enabling a larger audience to purchase products
+- **Modernizes** the digital shopping experience, leveraging augmented reality (AR) and machine learning (ML) techniques to bring digital shopping to your physical world
+- **Visualizes** products in their own physical environment through 3D product models and augmented reality
+- **ML-powered** smarter search - users can search for products by scanning images of related products, eliminating the need for keyword searches
+- Have **peace of mind** knowing the user will receive top quality products verified through a private blockchain acting as a quality control ledger for products
+- Enables **crypto payments** for products, enabling a larger audience to purchase products
 
 
 # Inspiration
