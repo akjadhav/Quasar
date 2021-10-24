@@ -9,8 +9,9 @@ We believe that your shopping should be as smart as you are. Experience an intel
 
 1. Clone the repo
 2. Run `npm install` from the project directory.
-3. To start server in production mode, run `npm start`. Use `npm run dev` for development.
-4. Navigate to `https://localhost:3000` in your browser.
+3. Download craco with command `npm i @craco/craco`
+4. To start server in production mode, run `npm start`. Use `npm run dev` for development.
+5. Navigate to `https://localhost:3000` in your browser.
 
 
 # What It Does
