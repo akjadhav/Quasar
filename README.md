@@ -3,7 +3,12 @@
 Store that uses AR/ML to make purchases easier and more informed
 
 
-# Usage
+# Installation Notes
+
+1. Clone the repo
+2. Run `npm install` from the project directory.
+3. To start server in production mode, run `npm start`. Use `npm run dev` for development.
+4. Navigate to `https://localhost:3000` in your browser.
 
 NPM instructions
 
