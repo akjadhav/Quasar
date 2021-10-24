@@ -7,6 +7,7 @@ module.exports = {
       colors: {
         'custom-purple': '#360B30',
         'orange': '#ff350f',
+        'dark-color': '#191823'
       },
     },
   },

@@ -13,7 +13,7 @@ import Image from "material-ui-image";
 test.init_API();
 
 export default function Home(props) {
-  putItem("Alarm Clock", "0", 'https://storage.echo3d.co/flat-poetry-6028/24f46462-fe01-470f-a0c7-ab22875061cf.png', 'https://storage.echo3d.co/flat-poetry-6028/250639c3-f867-4b0c-9731-2b82b62394b8.glb', 'https://storage.echo3d.co/flat-poetry-6028/6e556520-1ffa-4784-90ba-61cd347a36b3.usdz','$10', 'Alarm Clock to Wake the Deepest of Sleepers');
+  // putItem("Alarm Clock", "0", 'https://storage.echo3d.co/flat-poetry-6028/24f46462-fe01-470f-a0c7-ab22875061cf.png', 'https://storage.echo3d.co/flat-poetry-6028/250639c3-f867-4b0c-9731-2b82b62394b8.glb', 'https://storage.echo3d.co/flat-poetry-6028/6e556520-1ffa-4784-90ba-61cd347a36b3.usdz','$10', 'Alarm Clock to Wake the Deepest of Sleepers');
   const [products, setProducts] = useState(null);
   const history = useHistory();
   const [isAuth, setIsAuth] = useState(false);
