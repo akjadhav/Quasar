@@ -196,6 +196,7 @@ export default function ItemDetail(props) {
                 </div>
               </div>
             </div>
+            
             <h1 className="text-6xl font-extrabold tracking-tight text-center my-24 text-white">
               RECOMMENDED PRODUCTS
             </h1>

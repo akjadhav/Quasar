@@ -127,12 +127,30 @@ export default function Home(props) {
                 OUR STORY
               </h1>
 
-              <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center  my-8 text-white">
+              <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-left  my-8 text-white">
                 We believe that your shopping should be as smart as you are.
                 Experience an intelligent shopping platform
                 that utilizes AR and
                 machine-learning to find the product you need.
                 Crypto friendly and NCR-services compatible.
+                <br></br>
+                <br></br>
+                - Modernizes the digital shopping experience, leveraging augmented reality (AR) and machine learning (ML) techniques to bring digital shopping to your physical world
+                <br></br>
+                <br></br>
+                - Visualizes products in their own physical environment through 3D product models and augmented reality
+                <br></br>
+                <br></br>
+                - ML-powered smarter search - users can search for products by scanning images of related products, eliminating the need for keyword searches
+                <br></br>
+                <br></br>
+                - Have peace of mind knowing the user will receive top quality products verified through a private blockchain acting as a quality control ledger for products
+                <br></br>
+                <br></br>
+                - Enables crypto payments for products, enabling a larger audience to purchase products
+                <br></br>
+                <br></br>
+                - Blockchain-based QC ledger to keep track of the lifecycle of a product from manufacturing to production to store shelves
 
               </h2>
 
@@ -142,6 +160,9 @@ export default function Home(props) {
 
               <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center my-8 text-white">
                 Proudly sleep-deprived to bring you this platform.
+                <br></br>
+                <br></br>
+                Made with love by Jorge Aquino, Noah Chong, Ameya Jadhav, Ayden Marshall.
 
               </h2>
             </div>
