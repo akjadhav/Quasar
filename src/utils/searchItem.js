@@ -25,6 +25,7 @@ export function handleSearch(event)
 
 
     var file = new Blob([upload], {type: upload.type});
+    console.log(file);
     if (window.navigator.msSaveOrOpenBlob) // IE10+
         window.navigator.msSaveOrOpenBlob(file, upload.name);
     else { // Others
@@ -47,19 +48,47 @@ export function handleSearch(event)
 
     //const [model, setModel] = useState();
 
-    console.log(file)
-
+    console.log("creating reader");
+    var img = document.createElement("img");
+    console.log(img);
+    printFile(file);
     const reader = new FileReader();
-    var img = new Image();
+
+    async function printFile(file) {
+      console.log("In print File");
+      const reader = new FileReader();
+      console.log("read as data url");
+      await reader.readAsDataURL(file);
+      console.log("finished");
+
+      reader.onload = function(evt) {
+        console.log("onload");
+        console.log(evt.target.result);
+        img.src= evt.target.result;
+
+        console.log("==========");
+        console.log(img);
+      };
+      
+    }
+
+   
 
     reader.addEventListener("load", function () {
+        reader.readAsDataURL(file);
+        console.log("===");
+        console.log(reader.result);
+        console.log(".....");
         // convert image file to base64 string
         img.src = reader.result;
+
+        console.log("AHHHH");
+        console.log(img);
     }, false);
 
-    if (file) {
-        reader.readAsDataURL(file);
-    }
+    // if (file) {
+    //     reader.readAsDataURL(file);
+    // }
 
     /*
     //window.addEventListener('load', (event) => {
@@ -87,6 +116,7 @@ export function handleSearch(event)
         // Classify the image.
         const predictions = await model.detect(img);
 
+        console.log(img);
         console.log('Predictions: ');
         console.log(predictions);
     })();
