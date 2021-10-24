@@ -45,3 +45,7 @@ As brick-and-mortar stores close across the country, beaten by online retail gia
 [Ameya Jadhav](https://www.linkedin.com/in/ameyajadhav/)
 
 [Jorge Aquino](https://www.linkedin.com/in/jorge-e-aquino/)
+
+
+# Team
+[Devpost Project](https://devpost.com/software/search-project-nb92418cim0x)
