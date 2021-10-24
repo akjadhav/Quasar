@@ -21,9 +21,9 @@ export default function Account() {
           <h3 className="dark-color text-5xl mb-4 drop-shadow-lg font-extrabold tracking-tight text-center my-0 text-white">
             Account Information
           </h3>
-          <div className="mx-auto rounded-lg block m-24 text-center bg-gray-100 w-10/12">
-            <div className="flex rounded-md bg-gradient-to-t from-white to-gray-200">
-              <dl className="mx-auto grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200 md:grid-cols-2 md:divide-y-0 md:divide-x">
+          <div className="mx-auto rounded-lg block m-24 text-center bg-gray-900 w-10/12">
+            <div className="flex rounded-md bg-dark-color">
+              <dl className="mx-auto my-10 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200 md:grid-cols-2 md:divide-y-0 md:divide-x">
                 {stats.map((item) => (
                   <div key={item.name} className="px-4 py-5 sm:p-6">
                     <dt className="text-base font-normal text-gray-900">{item.name}</dt>
@@ -59,9 +59,12 @@ export default function Account() {
                 ))}
               </dl>
             </div>
-        <div className="mx-auto">
-          <img src="/bar.png" alt="bar"></img>
-        </div>
+            <div className="mx-auto">
+              <img src="/graph.png" alt="bar"></img>
+            </div>
+            <div className="mx-auto">
+              <img src="/bar.png" alt="bar"></img>
+            </div>
           </div>
         </div>
       </div>
