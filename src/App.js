@@ -9,16 +9,39 @@ import Cart from "./pages/Cart";
 import { Button } from "@mui/material";
 import { auth, database } from "./utils/firebase";
 import { useCookies } from 'react-cookie';
-
+import Snackbar from '@mui/material/Snackbar';
+import Alert from "@mui/material/Alert";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 function App() {
   const [cookies, setCookie] = useCookies(['currItem']);
+  const vertical = 'bottom'
+  const horizontal = 'center'
 
   const handleCurrItemChange = (item) => {
     console.log(item)
     setCookie('currItem', item, { path: '/' });
   }
+
+  const [logInSeverity, setLogInSeverity] = useState("error");
+  const [logInMessage, setLogInMessage] = useState("Login Failed :(");
+  const [isLogInAlert, setIsLogInAlert] = useState(false);
+
+  const [registerSeverity, setRegisterSeverity] = useState("error");
+  const [registerMessage, setRegisterMessage] = useState(
+    "Registration Failed :("
+  );
+  const [isRegisterAlert, setIsRegisterAlert] = useState(false);
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setIsRegisterAlert(false);
+    setIsLogInAlert(false);
+  };
+
+
 
   return (
     <div>
@@ -69,11 +92,41 @@ function App() {
               <Users />
             </Route>
             <Route path="/">
-              <Login />
+              <Login setLoginMessage={setLogInMessage} setLoginSeverity={setLogInSeverity} setIsLoginAlert={setIsLogInAlert} setRegisterMessage={setRegisterMessage} setRegisterSeverity={setRegisterSeverity} setIsRegisterAlert={setIsRegisterAlert}/>
             </Route>
           </Switch>
         </div>
       </Router>
+
+      <Snackbar
+        open={isLogInAlert}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical, horizontal }}
+      >
+        <Alert
+          onClose={handleClose}
+          severity={logInSeverity}
+          sx={{ width: "100%" }}
+        >
+          {logInMessage}
+        </Alert>
+      </Snackbar>
+
+      <Snackbar
+        open={isRegisterAlert}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        anchorOrigin={{ vertical, horizontal }}
+      >
+        <Alert
+          onClose={handleClose}
+          severity={registerSeverity}
+          sx={{ width: "100%" }}
+        >
+          {registerMessage}
+        </Alert>
+      </Snackbar>
     </div>
   );
 }
