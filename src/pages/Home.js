@@ -76,9 +76,9 @@ export default function Home(props) {
           <div className="stars">
             <div className="max-w-2xl mx-auto px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8 -my-32">
 
-              <h2 className="text-8xl mb-20 drop-shadow-lg font-extrabold tracking-tight text-center my-0 text-white">
+              <h1 className="text-8xl mb-20 drop-shadow-lg font-extrabold tracking-tight text-center my-0 text-white">
                 HACKGT STORE
-              </h2>
+              </h1>
 
               {/* product cells div */}
               <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 mx-24 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-10">

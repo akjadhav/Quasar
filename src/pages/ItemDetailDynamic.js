@@ -4,7 +4,7 @@ import { auth, database } from "../utils/firebase";
 import * as handlePaymentCrypto from "../utils/handlePaymentCrypto";
 import { useHistory } from "react-router";
 import "@google/model-viewer/dist/model-viewer";
-import { Button, Paper } from "@mui/material";
+import { Button, Paper, Card } from "@mui/material";
 
 export default function ItemDetail(props) {
   const [products, setProducts] = useState(null);
@@ -66,102 +66,106 @@ export default function ItemDetail(props) {
         <div className="min-h-full pb-20 bg-gradient-to-b from-gray-900 to-purple-900 relative z-40">
           <div className="stars">
             <div className="mx-auto rounded-lg block m-24 text-center bg-gray-100 w-10/12 h-auto">
-              <div className="flex bg-gradient-to-b from-orange to-magenta-900" style={{height: "600px"}}>
-                {currItem.mod_src && (
-                  <div className="w-6/12 h-96 border-red-700 m-14">
-                    <model-viewer
-                      style={{ width: "500px", height: "500px" }}
-                      class="model"
-                      src={currItem.mod_src}
-                      alt={currItem.description + " glb"}
-                      preload=""
-                      background-color={modelBackgroundColor}
-                      shadow-intensity="1"
-                      camera-controls=""
-                      auto-rotate=""
-                      ios-src={currItem.mod_ios_src}
-                      quick-look-browsers="safari chrome"
-                    ><div slot="progress-bar" /></model-viewer>
-                  </div>
-                )}
-                {!currItem.mod_src && (
-                  <div className="w-6/12 m-24">
-                    <img src={currItem.img_src} className="" />
-                  </div>
-                )}
-                <div className="mt-20 w-6/12">
-                  <h2 className="text-6xl font-extrabold tracking-tight text-center my-10 text-white">
-                    {currItem.name}
-                  </h2>
-                  <h2 className="text-4xl font-bold tracking-tight text-center my-10 text-white">
-                    {currItem.price}
-                  </h2>
-                  <h3 className="text-2xl font-medium tracking-tight text-center text-white">
-                    {currItem.desc}
-                  </h3>
+              <Card>
+                <div className="flex bg-gradient-to-b from-orange to-magenta-900" style={{ height: "600px" }}>
+                  {currItem.mod_src && (
+                    <div className="w-6/12 h-96 border-red-700 m-14 model">
+                      <model-viewer
+                        style={{ width: "550px", height: "500px" }}
+                        class="model"
+                        src={currItem.mod_src}
+                        alt={currItem.description + " glb"}
+                        preload=""
+                        background-color={modelBackgroundColor}
+                        shadow-intensity="1"
+                        camera-controls=""
+                        auto-rotate=""
+                        rotation-per-second="1"
+                        ios-src={currItem.mod_ios_src}
+                        quick-look-browsers="safari chrome"
+                      ><div slot="progress-bar" /></model-viewer>
+                    </div>
+                  )}
+                  {!currItem.mod_src && (
+                    <div className="w-6/12 m-24">
+                      <img src={currItem.img_src} className="" alt="no 3d model found."/>
+                    </div>
+                  )}
+                  <div className="mt-20 w-6/12">
+                    <h2 className="text-6xl font-extrabold tracking-tight text-center my-10 text-white">
+                      {currItem.name}
+                    </h2>
+                    <h2 className="text-4xl font-bold tracking-tight text-center my-10 text-white">
+                      {currItem.price}
+                    </h2>
+                    <h3 className="text-2xl font-medium tracking-tight text-center text-white">
+                      {currItem.desc}
+                    </h3>
 
-                  <button
-                    className="mt-20 inline-block bg-green-600 my-2 py-2 w-9/12 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-green-400"
-                    onClick={onPurchaseCryptoClick}
-                  >
-                    Buy With Crypto
-                  </button>
-                  <button
-                    className="inline-block bg-yellow-600 my-2 py-2 w-9/12 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-yellow-400"
-                    onClick={onPurchaseNCRCoinClick}
-                  >
-                    Buy With NCR Coin
-                  </button>
+
+                    <button
+                      className="mt-20 inline-block bg-black my-1 py-3 w-9/12 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-gray-900"
+                      onClick={onPurchaseCryptoClick}
+                    >
+                      Buy With Crypto
+                    </button>
+                    <button
+                      className="inline-block bg-yellow-600 my-2 py-3 w-9/12 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-yellow-500"
+                      onClick={onPurchaseNCRCoinClick}
+                    >
+                      Buy With NCR Coin
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </Card>
             </div>
             <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-white">
               RECOMMENDED PRODUCTS
             </h2>
 
             <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 mx-48 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-10">
-                {console.log(products)}
-                {products &&
-                  products.map((product, i) => (
-                    <Paper key={i} onClick={() => handleImageClick(product)}>
-                      {/* each cell */}
-                      <div key={i} className="group p-4 drop-shadow-2xl relative cell">
-                        <div className="w-full rounded-xl min-h-80 bg-gradient-to-b from-blue-900 to-green-300 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-80 lg:h-112 lg:aspect-none cell">
-                          <model-viewer
-                            style={{ width: "280px", height: "390px", paddingTop: "20px", paddingBottom: "20px", background: "none" }}
-                            class="model"
-                            src={product.mod_src}
-                            alt={product.description + " glb"}
-                            preload=""
-                            background-color={modelBackgroundColor}
-                            shadow-intensity="1"
-                            auto-rotate=""
-                            ios-src={product.mod_ios_src}
-                            quick-look-browsers="safari chrome"
-                            rotation-per-second={(i % 2 == 0) ? "500%" : "-500%"}
-                            field-of-view="70deg"
-                            auto-rotate-delay='0'>
-                            <div slot="progress-bar" />
-                          </model-viewer>
-                        </div>
-                        <div className="mt-4 p-4 flex justify-between">
-                          <h3 className="text-2xl font-extrabold text-gray-700">
-                            <a>
-                              <span
-                                aria-hidden="true"
-                                className="absolute inset-0"
-                              />
-                              <p>{product.name}</p>
-                            </a>
-                          </h3>
-                          <p className="text-2xl font-medium text-gray-900">
-                            {product.price}
-                          </p>
-                        </div>
+              {console.log(products)}
+              {products &&
+                products.map((product, i) => (
+                  <Paper key={i} onClick={() => handleImageClick(product)}>
+                    {/* each cell */}
+                    <div key={i} onClick={() => scrollToTop()} className="group p-4 drop-shadow-2xl relative cell">
+                      <div className="w-full rounded-xl min-h-80 bg-gradient-to-b from-blue-900 to-green-300 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-80 lg:h-112 lg:aspect-none cell">
+                        <model-viewer
+                          style={{ width: "280px", height: "390px", paddingTop: "20px", paddingBottom: "20px", background: "none" }}
+                          class="model"
+                          src={product.mod_src}
+                          alt={product.description + " glb"}
+                          preload=""
+                          background-color={modelBackgroundColor}
+                          shadow-intensity="1"
+                          auto-rotate=""
+                          ios-src={product.mod_ios_src}
+                          quick-look-browsers="safari chrome"
+                          rotation-per-second={(i % 2 == 0) ? "500%" : "-500%"}
+                          field-of-view="70deg"
+                          auto-rotate-delay='0'>
+                          <div slot="progress-bar" />
+                        </model-viewer>
                       </div>
-                    </Paper>
-                  ))}
-              </div>
+                      <div className="mt-4 p-4 flex justify-between">
+                        <h3 className="text-2xl font-extrabold text-gray-700">
+                          <a>
+                            <span
+                              aria-hidden="true"
+                              className="absolute inset-0"
+                            />
+                            <p>{product.name}</p>
+                          </a>
+                        </h3>
+                        <p className="text-2xl font-medium text-gray-900">
+                          {product.price}
+                        </p>
+                      </div>
+                    </div>
+                  </Paper>
+                ))}
+            </div>
           </div>
         </div>
       </div>
