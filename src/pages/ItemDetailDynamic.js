@@ -4,7 +4,7 @@ import { auth, database } from "../utils/firebase";
 import * as handlePaymentCrypto from "../utils/handlePaymentCrypto";
 import { useHistory } from "react-router";
 import "@google/model-viewer/dist/model-viewer";
-import { Button, Paper } from "@mui/material";
+import { Card, Paper } from "@mui/material";
 
 export default function ItemDetail(props) {
   const [products, setProducts] = useState(null);
@@ -66,6 +66,7 @@ export default function ItemDetail(props) {
         <div className="min-h-full pb-20 bg-gradient-to-b from-gray-900 to-purple-900 relative z-40">
           <div className="stars">
             <div className="mx-auto rounded-lg block m-24 text-center bg-gray-100 w-10/12 h-auto">
+              <Card>
               <div className="flex bg-gradient-to-b from-orange to-magenta-900" style={{height: "600px"}}>
                 {currItem.mod_src && (
                   <div className="w-6/12 h-96 border-red-700 m-14">
@@ -114,6 +115,7 @@ export default function ItemDetail(props) {
                   </button>
                 </div>
               </div>
+              </Card>
             </div>
             <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-white">
               RECOMMENDED PRODUCTS
