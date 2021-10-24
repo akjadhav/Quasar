@@ -19,6 +19,10 @@ function App() {
   const vertical = 'bottom'
   const horizontal = 'center'
 
+  useEffect(() => {
+    document.title = "Quasar"
+  }); 
+
   const handleCurrItemChange = (item) => {
     console.log(item)
     setCookie('currItem', item, { path: '/' });

@@ -53,9 +53,15 @@ const navigation = [
             <div className="flex mx-auto w-full px-24">
             </div>
             <div className="ml-10 flex space-x-4">
+            <a
+                href="../search"
+                className="inline-block bg-indigo-900 py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-opacity-75"
+              >
+                Search
+              </a>
               <a
                 href="../account"
-                className="inline-block bg-indigo-900 py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-opacity-75"
+                className="inline-block bg-pink-500 py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-opacity-75"
               >
                 Account
               </a>
