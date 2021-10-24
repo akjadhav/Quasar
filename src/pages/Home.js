@@ -123,9 +123,9 @@ export default function Home(props) {
                   ))}
               </div>
 
-              <h2 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center mt-24 text-white">
+              <h1 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center mt-24 text-white">
                 OUR STORY
-              </h2>
+              </h1>
 
               <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center  my-8 text-white">
                 We believe that your shopping should be as smart as you are.
@@ -136,9 +136,9 @@ export default function Home(props) {
 
               </h2>
 
-              <h2 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center mt-24 text-white">
+              <h1 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center mt-24 text-white">
                 HACK GT
-              </h2>
+              </h1>
 
               <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center my-8 text-white">
                 Proudly sleep-deprived to bring you this platform.
