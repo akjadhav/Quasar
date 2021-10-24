@@ -35,7 +35,6 @@ const navigation = [
       }
     };
 
-    console.log(props.id)
     return (
       <header className="absolute inset-y-0 top-0 w-screen bg-gray-900 h-96 z-0">
         <nav className="max-w-7xl mx-auto mt-4 px-4 sm:px-6 lg:px-8" aria-label="Top">
@@ -53,7 +52,7 @@ const navigation = [
             <div className="flex mx-auto w-full px-24">
             </div>
             <div className="ml-10 flex space-x-4">
-            <a
+              <a
                 href="../search"
                 className="inline-block bg-indigo-900 py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-opacity-75"
               >

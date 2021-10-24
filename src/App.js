@@ -19,10 +19,6 @@ function App() {
   const vertical = 'bottom'
   const horizontal = 'center'
 
-  useEffect(() => {
-    document.title = "Quasar"
-  }); 
-
   const handleCurrItemChange = (item) => {
     console.log(item)
     setCookie('currItem', item, { path: '/' });
@@ -63,7 +59,7 @@ function App() {
               <Cart />
             </Route>
             <Route path="/search">
-              <Search />
+              <Search handleCurrItemChange={handleCurrItemChange}/>
             </Route>
             <Route path="/itemdetail">
               <ItemDetailDynamic currItem={cookies.currItem} handleCurrItemChange={handleCurrItemChange} />
