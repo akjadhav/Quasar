@@ -164,12 +164,10 @@ export default function ItemDetail(props) {
               {/* stats */}
               <div className="grid grid-cols-1 my-14 bg-gradient-to-b from-green-600 to-blue-900 rounded-md">
                 <h2 className="w-full text-6xl font-extrabold tracking-tight text-center my-10 text-white">
-                  STATS
+                  Product Lifecycle
                 </h2>
                 <div className="text-md w-full text-white ">
                   <p className="mb-4">
-                    Lifecycle of product
-                    <br />
                     * Each entry represents a unique QC of the product, including the unique hash ID that maps to the public QC ledger
                   </p>
                   { blockchainData.map((block, i)=> (
