@@ -79,87 +79,95 @@ export default function ItemDetail(props) {
     return (
       <div>
         <NavBar />
-        <div className="min-h-full pb-20 bg-gradient-to-b from-gray-900 to-purple-900 relative z-40">
+        <div className="min-h-full mt-40 pb-20 bg-gradient-to-b from-gray-900 to-purple-900 relative z-40">
           <div className="stars">
-            <div className="mx-auto rounded-lg block m-24 text-center bg-gray-100 w-10/12 h-auto">
-              <Card>
-                <div className="flex bg-gradient-to-b from-orange to-magenta-900" style={{ height: "700px" }}>
-                  {currItem.mod_src && (
-                    <div className="w-6/12 h-96 border-red-700 m-14 model">
-                      <model-viewer
-                        style={{ width: "550px", height: "500px" }}
-                        class="model"
-                        src={currItem.mod_src}
-                        alt={currItem.description + " glb"}
-                        preload=""
-                        background-color={modelBackgroundColor}
-                        shadow-intensity="1"
-                        camera-controls=""
-                        auto-rotate=""
-                        rotation-per-second="1"
-                        ios-src={currItem.mod_ios_src}
-                        quick-look-browsers="safari chrome"
-                      ><div slot="progress-bar" /></model-viewer>
-                    </div>
-                  )}
-                  {!currItem.mod_src && (
-                    <div className="w-6/12 m-24">
-                      <img src={currItem.img_src} className="" alt="no 3d model found." />
-                    </div>
-                  )}
-                  <div className="mt-20 w-6/12">
-                    <h2 className="text-6xl font-extrabold tracking-tight text-center my-10 text-white">
-                      {currItem.name}
-                    </h2>
-                    <h2 className="text-4xl font-bold tracking-tight text-center my-10 text-white">
-                      {currItem.price}
-                    </h2>
-                    <h3 className="text-2xl font-medium tracking-tight text-center text-white">
-                      {currItem.desc}
-                    </h3>
+            <div className="mx-auto rounded-lg block m-24 text-center w-10/12 h-auto">
+              <div className="h-14"></div>
+
+              {/* main product detail cell */}
+              <div className="flex mt-30 bg-gradient-to-b from-orange to-magenta-900 rounded-md" style={{ height: "660px" }}>
+                {currItem.mod_src && (
+                  <div className="w-6/12 h-96 border-red-700 m-14 model">
+                    <model-viewer
+                      style={{ width: "500px", height: "500px" }}
+                      class="model"
+                      src={currItem.mod_src}
+                      alt={currItem.description + " glb"}
+                      preload=""
+                      background-color={modelBackgroundColor}
+                      shadow-intensity="1"
+                      camera-controls=""
+                      auto-rotate=""
+                      rotation-per-second="1"
+                      ios-src={currItem.mod_ios_src}
+                      quick-look-browsers="safari chrome"
+                    ><div slot="progress-bar" /></model-viewer>
+                  </div>
+                )}
+                {!currItem.mod_src && (
+                  <div className="w-6/12 m-24">
+                    <img src={currItem.img_src} className="" alt="no 3d model found." />
+                  </div>
+                )}
+                <div className="mt-16 w-6/12">
+                  <h2 className="text-6xl font-extrabold tracking-tight text-center my-10 text-white">
+                    {currItem.name}
+                  </h2>
+                  <h2 className="text-4xl font-bold tracking-tight text-center my-10 text-white">
+                    {currItem.price}
+                  </h2>
+                  <h3 className="text-2xl font-medium tracking-tight text-center text-white">
+                    {currItem.desc}
+                  </h3>
 
 
-                    <button
-                      className="mt-20 inline-block bg-black my-1 py-3 w-9/12 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-gray-900"
-                      onClick={onPurchaseCryptoClick}
+                  <button
+                    className="mt-20 inline-block bg-black my-1 py-3 w-9/12 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-gray-900"
+                    onClick={onPurchaseCryptoClick}
+                  >
+                    Buy With Crypto
+                  </button>
+                  <button
+                    className="inline-block bg-yellow-600 my-2 py-3 w-9/12 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-yellow-500"
+                    onClick={onPurchaseNCRCoinClick}
+                  >
+                    Buy With NCR Coin
+                  </button>
+                  <div>
+                    <a
+                      href="#"
+                      className="inline-block bg-white w-9/12 mt-10 py-2 px-4 border border-transparent rounded-md text-base font-medium text-indigo-900 hover:bg-indigo-50"
+                      onClick={handleOpen}
                     >
-                      Buy With Crypto
-                    </button>
-                    <button
-                      className="inline-block bg-yellow-600 my-2 py-3 w-9/12 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-yellow-500"
-                      onClick={onPurchaseNCRCoinClick}
+                      View in AR on your phone
+                    </a>
+                    <Modal
+                      open={isModal}
+                      onClose={handleClose}
                     >
-                      Buy With NCR Coin
-                    </button>
-                    <div>
-                      <a
-                        href="#"
-                        className="inline-block bg-white w-9/12 mt-10 py-2 px-4 border border-transparent rounded-md text-base font-medium text-indigo-900 hover:bg-indigo-50"
-                        onClick={handleOpen}
-                      >
-                        View in AR on your phone
-                      </a>
-                      <Modal
-                        open={isModal}
-                        onClose={handleClose}
-                      >
-                        <Card>
-                          <Box sx={styleModal}>
-                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                              <h2 className="text-2xl font-extrabold text-center">Scan With Your Phone</h2>
-                              <img className="mx-auto" src={currItem.img_src} alt='qr'></img>
-                            </Typography>
-                          </Box>
-                        </Card>
-                      </Modal>
-                    </div>
+                      <Card>
+                        <Box sx={styleModal}>
+                          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            <h2 className="text-2xl font-extrabold text-center">Scan With Your Phone</h2>
+                            <img className="mx-auto" src={currItem.img_src} alt='qr'></img>
+                          </Typography>
+                        </Box>
+                      </Card>
+                    </Modal>
                   </div>
                 </div>
-              </Card>
+              </div>
+
+              {/* stats */}
+              <div className="flex mt-14 bg-gradient-to-b from-green-600 to-blue-900 rounded-md" style={{ height: "500px" }}>
+                <h2 className="w-full text-6xl font-extrabold tracking-tight text-center my-10 text-white">
+                  STATS
+                </h2>
+              </div>
             </div>
-            <h2 className="text-6xl font-extrabold tracking-tight text-center my-24 text-white">
+            <h1 className="text-6xl font-extrabold tracking-tight text-center my-24 text-white">
               RECOMMENDED PRODUCTS
-            </h2>
+            </h1>
 
             <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 mx-48 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-10">
               {console.log(products)}
@@ -170,7 +178,7 @@ export default function ItemDetail(props) {
                     <div key={i} onClick={() => scrollToTop()} className="group p-4 drop-shadow-2xl relative cell">
                       <div className="w-full rounded-xl min-h-80 bg-gradient-to-b from-blue-900 to-green-300 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-80 lg:h-112 lg:aspect-none cell">
                         <model-viewer
-                          style={{ width: "280px", height: "390px", paddingTop: "20px", paddingBottom: "20px", background: "none" }}
+                          style={{ width: "280px", height: "390px", paddingTop: "20px", marginTop: "20px", paddingBottom: "20px", background: "none" }}
                           class="model"
                           src={product.mod_src}
                           alt={product.description + " glb"}

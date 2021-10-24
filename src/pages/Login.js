@@ -83,10 +83,10 @@ export default function Login(props) {
 
       <div className="bg-gradient-to-b h-screen from-gray-900 to-blue-900 relative z-40">
         <div className="mx-auto mt-24 h-96 w-4/6">
-          <h2 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center mt-24 mb-8 text-white">
-            Login
-          </h2>
-          <div className="mx-auto rounded-lg w-10/12 bg-white p-10">
+          <h1 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center mt-30 mb-20 text-white">
+            LOGIN
+          </h1>
+          <div className="mx-auto rounded-lg w-10/12 bg-gradient-to-b from-yellow-300 to-green-300 p-10">
             <TextField
               variant="standard"
               value={email}
@@ -97,12 +97,12 @@ export default function Login(props) {
             <TextField
               variant="standard"
               value={password}
-              style={{ display: "flex", width: "100%" }}
+              style={{ display: "flex", width: "100%", marginTop: "20px" }}
               type="password"
               label="Password"
               onChange={handlePasswordInputChange}
             />
-            <div className="right-0 align-right text-right">
+            <div className="right-0 my-3 mt-12 text-2xl text-center">
               <Button onClick={handleSignUp}>Register</Button>
               <Button onClick={handleLogIn}>Login</Button>
             </div>
