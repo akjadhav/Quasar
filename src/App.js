@@ -59,7 +59,7 @@ function App() {
               <Cart />
             </Route>
             <Route path="/search">
-              <Search />
+              <Search handleCurrItemChange={handleCurrItemChange}/>
             </Route>
             <Route path="/itemdetail">
               <ItemDetailDynamic currItem={cookies.currItem} handleCurrItemChange={handleCurrItemChange} />

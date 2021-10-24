@@ -5,12 +5,20 @@ import { useHistory } from "react-router";
 import { auth, database } from "../utils/firebase";
 import { Typography } from "@mui/material";
 
-export default function Search() {
+export default function Search(props) {
   const [isAuth, setIsAuth] = useState(false);
-  const [prediction, setPrediction] = useState('none')
+  const [prediction, setPrediction] = useState("none");
+  const [products, setProducts] = useState(null);
   const history = useHistory();
 
+  console.log(products);
+
   useEffect(() => {
+    database.ref("items/").on("value", (snapshot) => {
+      let data = snapshot.val();
+      setProducts(data);
+    });
+
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setIsAuth(true);
@@ -21,8 +29,29 @@ export default function Search() {
     });
   }, []);
 
+  const findMatchingClass = (data) => {
+    Object.keys(products).forEach((i) => {
+      if (i === 0) {
+        if (data === "clock") {
+          return products[i];
+        }
+      } else if (products[i].class === data) {
+        console.log("found");
+        props.handleCurrItemChange(products[i]);
+        history.replace("/itemdetail");
+      }
+    });
+    return null;
+  };
+
   const onChangeHandler = async (event) => {
-    let data = await searchItem.handleSearch(event)
+    let data = await searchItem.handleSearch(event);
+
+    if (data) {
+      let product = findMatchingClass(data);
+      if (product) {
+      }
+    }
   };
 
   if (!isAuth) {
@@ -52,9 +81,8 @@ export default function Search() {
           <div className="grid grid-cols-2">
             <div className="text-center">
               <h2 className="text-6xl font-extrabold tracking-tight text-center m-24 pl-80 text-white">
-                PREDICTION: 
+                PREDICTION:
               </h2>
-              {prediction !== ''? <Typography>{prediction}</Typography>: <Typography>none</Typography>}
               <label for="upload-ar">
                 <img
                   src="https://i.pinimg.com/originals/a1/26/f3/a126f399104b7e828caca547957c46b3.jpg"
