@@ -1,0 +1,79 @@
+/* ./src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  cursor: url("http://www.rw-designer.com/cursor-extern.php?id=110025"), auto;
+}
+
+.title h1 {
+  font-size: 36px;
+  font-family: 'Lato', sans-serif;
+  margin-top: 10em;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  /* Stryling the text and giving it gradiant */
+  color: #ffffff;
+  background: -webkit-linear-gradient(#eee, #333);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.2);
+
+  /* Make sure text is infront of background images */
+  display: block;
+  position: relative;
+  z-index: 3;
+}
+
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+.stars {
+  background: transparent url(/src/images/stars.png) repeat top center;
+  z-index: 10;
+}
+
+.twinkling {
+  background: transparent url(/src/images/twinkling.png) repeat top center;
+  z-index: 1;
+  animation: move-twink-back 200s linear infinite;
+}
+
+h1:hover {
+  transform: scale(1.09);
+}
+
+.cell:hover {
+  transform: scale(1.2);
+}
+
+.cell:hover p {
+  transform: scale(0.8);
+  margin-top: -20px;
+}
+
+.model {
+  transform: scale(1.3);
+}
