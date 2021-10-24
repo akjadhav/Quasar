@@ -21,7 +21,5 @@ export async function handleSearch(event) {
   // Load the model and Classify the image.
   const model = await load();
   const predictions = await model.detect(img);
-
-  console.log(predictions[0].class);
   return predictions ? predictions[0].class: null
 }

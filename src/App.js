@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import NavBar from "./components/NavBar"
+import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Account from "./pages/Account";
@@ -7,26 +7,24 @@ import ItemDetailDynamic from "./pages/ItemDetailDynamic";
 import Search from "./pages/Search";
 import Login from "./pages/Login";
 import Cart from "./pages/Cart";
-import { Button } from "@mui/material";
-import { auth, database } from "./utils/firebase";
-import { useCookies } from 'react-cookie';
-import Snackbar from '@mui/material/Snackbar';
+import { useCookies } from "react-cookie";
+import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
-  const [cookies, setCookie] = useCookies(['currItem']);
-  const vertical = 'bottom'
-  const horizontal = 'center'
+  const [cookies, setCookie] = useCookies(["currItem"]);
+  const vertical = "bottom";
+  const horizontal = "center";
 
   useEffect(() => {
-    document.title = "Quasar"
-  }); 
+    document.title = "Quasar";
+  });
 
   const handleCurrItemChange = (item) => {
-    console.log(item)
-    setCookie('currItem', item, { path: '/' });
-  }
+    console.log(item);
+    setCookie("currItem", item, { path: "/" });
+  };
 
   const [logInSeverity, setLogInSeverity] = useState("error");
   const [logInMessage, setLogInMessage] = useState("Login Failed :(");
@@ -46,8 +44,6 @@ function App() {
     setIsLogInAlert(false);
   };
 
-
-
   return (
     <div>
       <div style={{ marginBottom: "150px" }}>
@@ -66,7 +62,10 @@ function App() {
               <Search />
             </Route>
             <Route path="/itemdetail">
-              <ItemDetailDynamic currItem={cookies.currItem} handleCurrItemChange={handleCurrItemChange} />
+              <ItemDetailDynamic
+                currItem={cookies.currItem}
+                handleCurrItemChange={handleCurrItemChange}
+              />
             </Route>
             <Route path="/home">
               <Home handleCurrItemChange={handleCurrItemChange} />
@@ -78,7 +77,14 @@ function App() {
               <Account />
             </Route>
             <Route path="/">
-              <Login setLoginMessage={setLogInMessage} setLoginSeverity={setLogInSeverity} setIsLoginAlert={setIsLogInAlert} setRegisterMessage={setRegisterMessage} setRegisterSeverity={setRegisterSeverity} setIsRegisterAlert={setIsRegisterAlert} />
+              <Login
+                setLoginMessage={setLogInMessage}
+                setLoginSeverity={setLogInSeverity}
+                setIsLoginAlert={setIsLogInAlert}
+                setRegisterMessage={setRegisterMessage}
+                setRegisterSeverity={setRegisterSeverity}
+                setIsRegisterAlert={setIsRegisterAlert}
+              />
             </Route>
           </Switch>
         </div>

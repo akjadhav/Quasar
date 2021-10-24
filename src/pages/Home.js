@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
-import * as test from "../utils/NCR_API.js";
-import { test2 } from "../utils/echo3D";
-import { Redirect } from "react-router";
-import getSiteById from "../utils/getSiteById";
 import { useHistory } from "react-router";
 import { auth, database } from "../utils/firebase";
 import { Button, Paper } from "@mui/material";
 import { putItem } from "../utils/database_api";
-import Image from "material-ui-image";
-
-test.init_API();
 
 export default function Home(props) {
-  putItem("Alarm Clock", "0", 'https://storage.echo3d.co/flat-poetry-6028/24f46462-fe01-470f-a0c7-ab22875061cf.png', 'https://storage.echo3d.co/flat-poetry-6028/250639c3-f867-4b0c-9731-2b82b62394b8.glb', 'https://storage.echo3d.co/flat-poetry-6028/6e556520-1ffa-4784-90ba-61cd347a36b3.usdz','$10', 'Alarm Clock to Wake the Deepest of Sleepers');
+  putItem(
+    "Alarm Clock",
+    "0",
+    "https://storage.echo3d.co/flat-poetry-6028/24f46462-fe01-470f-a0c7-ab22875061cf.png",
+    "https://storage.echo3d.co/flat-poetry-6028/250639c3-f867-4b0c-9731-2b82b62394b8.glb",
+    "https://storage.echo3d.co/flat-poetry-6028/6e556520-1ffa-4784-90ba-61cd347a36b3.usdz",
+    "$10",
+    "Alarm Clock to Wake the Deepest of Sleepers"
+  );
   const [products, setProducts] = useState(null);
   const history = useHistory();
   const [isAuth, setIsAuth] = useState(false);
@@ -34,10 +35,9 @@ export default function Home(props) {
       }
       return unsubscribe;
     });
-  }, []);
+  });
 
   const handleAddScan = () => {
-    const updates = {};
     const unsubscribe = database
       .ref("users/" + auth.currentUser.uid + "/scans/")
       .child("numScans")
@@ -52,7 +52,6 @@ export default function Home(props) {
     history.replace("/itemdetail");
   };
 
-
   if (!isAuth) {
     return <div></div>;
   } else {
@@ -60,7 +59,7 @@ export default function Home(props) {
       <div className="">
         <NavBar id={id} />
 
-        {'DONT MOVE THIS BUTTON OR ELSE THINGS WILL BREAK'}
+        {"DONT MOVE THIS BUTTON OR ELSE THINGS WILL BREAK"}
         {isAuth && (
           <div>
             <Button>Sign Out</Button>
@@ -73,7 +72,6 @@ export default function Home(props) {
         <div className="bg-gradient-to-b from-gray-900 to-purple-900 relative z-40">
           <div className="stars">
             <div className="max-w-2xl mx-auto px-4 sm:py-12 sm:px-6 lg:max-w-7xl lg:px-8 -my-32 z-0">
-
               <h1 className="text-6xl mb-20 drop-shadow-lg font-extrabold tracking-tight text-center my-0 text-white">
                 ECOMMERCE FOR THE FUTURE.
               </h1>
@@ -85,10 +83,19 @@ export default function Home(props) {
                   products.map((product, i) => (
                     <Paper key={i} onClick={() => handleImageClick(product)}>
                       {/* each cell */}
-                      <div key={i} className="group p-4 drop-shadow-2xl relative cell">
+                      <div
+                        key={i}
+                        className="group p-4 drop-shadow-2xl relative cell"
+                      >
                         <div className="w-full rounded-xl min-h-80 bg-gradient-to-b from-blue-900 to-green-300 aspect-w-1 aspect-h-1 overflow-hidden group-hover:opacity-80 lg:h-112 lg:aspect-none cell">
                           <model-viewer
-                            style={{ width: "280px", height: "390px", paddingTop: "20px", paddingBottom: "20px", background: "none" }}
+                            style={{
+                              width: "280px",
+                              height: "390px",
+                              paddingTop: "20px",
+                              paddingBottom: "20px",
+                              background: "none",
+                            }}
                             class="model"
                             src={product.mod_src}
                             alt={product.description + " glb"}
@@ -98,15 +105,16 @@ export default function Home(props) {
                             auto-rotate=""
                             ios-src={product.mod_ios_src}
                             quick-look-browsers="safari chrome"
-                            rotation-per-second={(i % 2 == 0) ? "500%" : "-500%"}
+                            rotation-per-second={i % 2 === 0 ? "500%" : "-500%"}
                             field-of-view="70deg"
-                            auto-rotate-delay='0'>
+                            auto-rotate-delay="0"
+                          >
                             <div slot="progress-bar" />
                           </model-viewer>
                         </div>
                         <div className="mt-4 p-4 flex justify-between">
                           <h3 className="text-2xl font-extrabold text-gray-700">
-                            <a>
+                            <a href="./">
                               <span
                                 aria-hidden="true"
                                 className="absolute inset-0"
@@ -129,11 +137,9 @@ export default function Home(props) {
 
               <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center  my-8 text-white">
                 We believe that your shopping should be as smart as you are.
-                Experience an intelligent shopping platform
-                that utilizes AR and
-                machine-learning to find the product you need.
-                Crypto friendly and NCR-services compatible.
-
+                Experience an intelligent shopping platform that utilizes AR and
+                machine-learning to find the product you need. Crypto friendly
+                and NCR-services compatible.
               </h2>
 
               <h2 className="text-6xl drop-shadow-lg font-extrabold tracking-tight text-center mt-24 text-white">
@@ -142,13 +148,11 @@ export default function Home(props) {
 
               <h2 className="text-2xl drop-shadow-lg font-light tracking-tight text-center my-8 text-white">
                 Proudly sleep-deprived to bring you this platform.
-
               </h2>
             </div>
           </div>
-        </div >
-      </div >
-
+        </div>
+      </div>
     );
   }
 }

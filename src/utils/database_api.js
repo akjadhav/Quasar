@@ -1,4 +1,4 @@
-import { auth, database } from "../utils/firebase";
+import { database } from "../utils/firebase";
 
 const putItem = (name, id, imsrc, modsrc, modIosSrc, price, desc) => {
   const updates = {

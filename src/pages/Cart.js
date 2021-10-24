@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import NavBar from "../components/NavBar";
 import { useHistory } from "react-router";
 import { auth, database } from "../utils/firebase";
-import { Button, Paper } from "@mui/material";
+import { Paper } from "@mui/material";
 
 export default function Cart(props) {
   const [products, setProducts] = useState(null);
   const history = useHistory();
-  const id = 1;
   const [isAuth, setIsAuth] = useState(false);
 
   useEffect(() => {
@@ -19,7 +18,7 @@ export default function Cart(props) {
       }
       return unsubscribe;
     });
-  }, []);
+  });
 
   useEffect(() => {
     database.ref("items/").on("value", (snapshot) => {
@@ -62,7 +61,7 @@ export default function Cart(props) {
                       <div className="mt-4 flex justify-between">
                         <div>
                           <h3 className="text-sm text-gray-700">
-                            <a>
+                            <a href="./">
                               <span
                                 aria-hidden="true"
                                 className="absolute inset-0"

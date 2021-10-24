@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { auth, database } from "../utils/firebase";
-import { Redirect, useHistory } from "react-router";
+import { useHistory } from "react-router";
 import { TextField, Button } from "@mui/material";
 import NavBar from "../components/NavBar";
-
 
 export default function Login(props) {
   const history = useHistory();
@@ -17,7 +16,7 @@ export default function Login(props) {
       }
     });
     return unsubscribe;
-  }, []);
+  });
 
   const clearFields = () => {
     setEmail("");
@@ -35,7 +34,6 @@ export default function Login(props) {
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((userCredentials) => {
-        const user = userCredentials.user;
         props.setRegisterMessage("Successfully Registered!");
         props.setRegisterSeverity("success");
         props.setIsRegisterAlert(true);
@@ -55,7 +53,6 @@ export default function Login(props) {
     auth
       .signInWithEmailAndPassword(email, password)
       .then((userCredentials) => {
-        const user = userCredentials.user;
         props.setLoginMessage("Successfully Logged In!");
         props.setLoginSeverity("success");
         props.setIsLoginAlert(true);

@@ -1,4 +1,3 @@
-import React from "react";
 const Web3 = require("web3");
 let userAddress;
 let flag = false;
@@ -28,7 +27,7 @@ async function makePurchase() {
   let price = 100000000000000;
 
   // resolve the ENS name
-  let chain = 'ropsten';
+  //let chain = 'ropsten';
   let transaction;
   if (isNCR)
   {
@@ -83,7 +82,7 @@ async function makePurchase() {
     transaction = 
       {
         to: toAddr,
-        chain: 'ropsten',
+        //chain: 'ropsten',
         from: userAddress,
         value: price
       }
@@ -99,7 +98,7 @@ async function makePurchase() {
 }
 
 async function connectionSuccess() {
-  await until((_) => flag == true);
+  await until((_) => flag === true);
 
   await window.web3.eth.getAccounts().then((accounts) => {
     userAddress = accounts[0];

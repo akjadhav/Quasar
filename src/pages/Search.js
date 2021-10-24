@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import NavBar from "../components/NavBar";
-import * as searchItem from "../utils/searchItem";
+//import * as searchItem from "../utils/searchItem";
 import { useHistory } from "react-router";
-import { auth, database } from "../utils/firebase";
+import { auth } from "../utils/firebase";
 import { Typography } from "@mui/material";
 
 export default function Search() {
   const [isAuth, setIsAuth] = useState(false);
-  const [prediction, setPrediction] = useState('none')
+  const [prediction] = useState("none");
   const history = useHistory();
 
   useEffect(() => {
@@ -19,10 +19,10 @@ export default function Search() {
       }
       return unsubscribe;
     });
-  }, []);
+  });
 
   const onChangeHandler = async (event) => {
-    let data = await searchItem.handleSearch(event)
+    //let data = await searchItem.handleSearch(event);
   };
 
   if (!isAuth) {
@@ -52,11 +52,16 @@ export default function Search() {
           <div className="grid grid-cols-2">
             <div className="text-center">
               <h2 className="text-6xl font-extrabold tracking-tight text-center m-24 pl-80 text-white">
-                PREDICTION: 
+                PREDICTION:
               </h2>
-              {prediction !== ''? <Typography>{prediction}</Typography>: <Typography>none</Typography>}
+              {prediction !== "" ? (
+                <Typography>{prediction}</Typography>
+              ) : (
+                <Typography>none</Typography>
+              )}
               <label for="upload-ar">
                 <img
+                  alt="pictureofsomethingreallycool"
                   src="https://i.pinimg.com/originals/a1/26/f3/a126f399104b7e828caca547957c46b3.jpg"
                   className="w-auto h-80 mx-auto pl-80 cursor-pointer"
                 />
