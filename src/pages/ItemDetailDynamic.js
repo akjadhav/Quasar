@@ -162,8 +162,8 @@ export default function ItemDetail(props) {
               </div>
 
               {/* stats */}
-              <div className="grid grid-cols-1 my-14 bg-gradient-to-b from-green-600 to-blue-900 rounded-md">
-                <h2 className="w-full text-6xl font-extrabold tracking-tight text-center my-10 text-white">
+              <div className="w-9/12 mx-auto grid grid-cols-1 my-14 bg-gradient-to-b from-green-800 to-blue-900 rounded-md">
+                <h2 className="w-full text-4xl font-bold tracking-tight text-center mt-10 mb-4 text-white">
                   Product Lifecycle
                 </h2>
                 <div className="text-md w-full text-white ">
