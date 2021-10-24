@@ -3,9 +3,11 @@ import NavBar from "../components/NavBar";
 import * as searchItem from "../utils/searchItem";
 import { useHistory } from "react-router";
 import { auth, database } from "../utils/firebase";
+import { Typography } from "@mui/material";
 
 export default function Search() {
   const [isAuth, setIsAuth] = useState(false);
+  const [prediction, setPrediction] = useState('none')
   const history = useHistory();
 
   useEffect(() => {
@@ -19,8 +21,8 @@ export default function Search() {
     });
   }, []);
 
-  const onChangeHandler = (event) => {
-    searchItem.handleSearch(event);
+  const onChangeHandler = async (event) => {
+    let data = await searchItem.handleSearch(event)
   };
 
   if (!isAuth) {
@@ -50,8 +52,9 @@ export default function Search() {
           <div className="grid grid-cols-2">
             <div className="text-center">
               <h2 className="text-6xl font-extrabold tracking-tight text-center m-24 pl-80 text-white">
-                SEARCH
+                PREDICTION: 
               </h2>
+              {prediction !== ''? <Typography>{prediction}</Typography>: <Typography>none</Typography>}
               <label for="upload-ar">
                 <img
                   src="https://i.pinimg.com/originals/a1/26/f3/a126f399104b7e828caca547957c46b3.jpg"
@@ -64,6 +67,7 @@ export default function Search() {
                 id="upload-ar"
                 accept=".jpg, .jpeg, .png"
                 className="hidden"
+                onInput={console.log("file inputted")}
                 onChange={onChangeHandler}
               />
             </div>
