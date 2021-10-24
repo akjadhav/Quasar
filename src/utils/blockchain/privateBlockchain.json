@@ -1,0 +1,61 @@
+{
+    "blockchain": [
+        {
+            "index": 0,
+            "timestamp": "01/01/2020",
+            "data": "Genesis Block",
+            "precedingHash": "0",
+            "hash": "a3ce34c39d1afefc06f6c3eae2e9430605833af4d0328de2990fbc200fa3a8ce",
+            "nonce": 0
+        },
+        {
+            "index": 1,
+            "timestamp": "01/20/2020",
+            "data": {
+                "sender": "XYZ Manufacturing",
+                "recipient": "NCR API Mart",
+                "quantity": 1
+            },
+            "precedingHash": "a3ce34c39d1afefc06f6c3eae2e9430605833af4d0328de2990fbc200fa3a8ce",
+            "hash": "00002a63aeebc171febc365a6ce887dff3dd350e62429f98cb0681c49ff643a9",
+            "nonce": 111882
+        },
+        {
+            "index": 2,
+            "timestamp": "02/05/2020",
+            "data": {
+                "sender": "ABC Assembly",
+                "recipient": "NCR API Mart",
+                "quantity": 1
+            },
+            "precedingHash": "00002a63aeebc171febc365a6ce887dff3dd350e62429f98cb0681c49ff643a9",
+            "hash": "0000db12d44e587bce95ec876f4e5369d075a684c8be31070098dae1c28e6a18",
+            "nonce": 30649
+        },
+        {
+            "index": 3,
+            "timestamp": "02/17/2020",
+            "data": {
+                "sender": "IJK Distribution",
+                "recipient": "NCR API Mart",
+                "quantity": 1
+            },
+            "precedingHash": "0000db12d44e587bce95ec876f4e5369d075a684c8be31070098dae1c28e6a18",
+            "hash": "00007754a678dcaa3cd35794b14be3fec32ee36c7a0186e74d3f33d0975ed19f",
+            "nonce": 67579
+        },
+        {
+            "index": 4,
+            "timestamp": "02/28/2020",
+            "data": {
+                "sender": "NCR Internal QC",
+                "recipient": "NCR API Mart",
+                "quantity": 1
+            },
+            "precedingHash": "00007754a678dcaa3cd35794b14be3fec32ee36c7a0186e74d3f33d0975ed19f",
+            "hash": "000018ee6f86d10ba91bc8113c32c48470d9d4dc3d65c1ac8ae6e4e1f251509d",
+            "nonce": 207926
+        }
+    ],
+    "difficulty": 4
+}
