@@ -101,6 +101,7 @@ export default function ItemDetail(props) {
                       shadow-intensity="1"
                       camera-controls=""
                       auto-rotate=""
+                      disable-zoom
                       rotation-per-second="1"
                       ios-src={currItem.mod_ios_src}
                       quick-look-browsers="safari chrome"
@@ -162,20 +163,20 @@ export default function ItemDetail(props) {
               </div>
 
               {/* stats */}
-              <div className="grid grid-cols-1 my-14 bg-gradient-to-b from-green-600 to-blue-900 rounded-md">
+              <div className="grid pb-16 pt-6 grid-cols-1 my-14 bg-gradient-to-b from-green-600 to-blue-900 rounded-md">
                 <h2 className="w-full text-6xl font-extrabold tracking-tight text-center my-10 text-white">
                   Product Lifecycle
                 </h2>
-                <div className="text-md w-full text-white ">
-                  <p className="mb-4">
+                <div className="w-full text-white ">
+                  <p className="text-lg mb-5">
                     * Each entry represents a unique QC of the product, including the unique hash ID that maps to the public QC ledger
                   </p>
                   { blockchainData.map((block, i)=> (
-                    <div key={i} className="mb-2">
-                      <p>
+                    <div key={i} className="mb-3">
+                      <p className="text-xl font-extrabold">
                       { block.timestamp }
                       </p>
-                      <p className="text-xs">
+                      <p className="text-s">
                       { block.hash }
                       </p>
                       
