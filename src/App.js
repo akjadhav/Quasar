@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Users from "./pages/Users";
+import Account from "./pages/Account";
 import ItemDetailDynamic from "./pages/ItemDetailDynamic";
 import Search from "./pages/Search";
 import Login from "./pages/Login";
@@ -88,8 +88,8 @@ function App() {
             <Route path="/about">
               <About />
             </Route>
-            <Route path="/users">
-              <Users />
+            <Route path="/account">
+              <Account />
             </Route>
             <Route path="/">
               <Login setLoginMessage={setLogInMessage} setLoginSeverity={setLogInSeverity} setIsLoginAlert={setIsLogInAlert} setRegisterMessage={setRegisterMessage} setRegisterSeverity={setRegisterSeverity} setIsRegisterAlert={setIsRegisterAlert}/>
