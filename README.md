@@ -49,3 +49,5 @@ As brick-and-mortar stores close across the country, beaten by online retail gia
 
 # Learn more about this project
 [Devpost](https://devpost.com/software/search-project-nb92418cim0x)
+
+[Deployed Project](https://quasar-hackgt.netlify.app)
