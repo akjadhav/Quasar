@@ -1,6 +1,6 @@
 ![HackGTStore](HackGTStore.PNG)
 
-# Quasar
+# Quasar (HackGT 8)
 
 We believe that your shopping should be as smart as you are. Experience an intelligent shopping platform that utilizes augmented reality (AR) and machine learning (ML) to find the product you need, all while being crypto friendly and NCR-services compatible.
 
